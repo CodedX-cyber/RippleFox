@@ -69,7 +69,7 @@ def test_pages():
     print('- Settings: http://localhost:8000/settings/')
     print('\nLogin at: http://localhost:8000/web/login/')
     print('Email: testadmin@ripplefox.com')
-    print('Password: Test123!*_')
+    print('Password: ')
 
 if __name__ == '__main__':
     test_pages()
