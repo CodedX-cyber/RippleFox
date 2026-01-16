@@ -10,7 +10,7 @@ from django.contrib.auth.hashers import make_password, check_password
 
 User = get_user_model()
 email = 'kingalale@gmail.com'
-password = '2025Volts2026$$'  # The password you're trying to use
+password = ''  # The password you're trying to use
 
 try:
     # Get the user
