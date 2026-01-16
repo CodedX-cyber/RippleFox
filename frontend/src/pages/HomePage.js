@@ -495,7 +495,7 @@ const HomePage = () => {
       <Box component="section" sx={{ backgroundColor: '#05070e', color: '#fff', py: { xs: 10, md: 14 } }}>
         <Container maxWidth="lg">
           <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 4 }}>
-            Why Siatech Africa?
+            Why RippleFox Africa?
           </Typography>
           <Typography align="center" sx={{ mb: 6, maxWidth: 720, mx: 'auto', color: 'rgba(255,255,255,0.8)' }}>
             Business developers, engineers, and analysts collaborate to deliver dependable infrastructure with agility and integrity.
