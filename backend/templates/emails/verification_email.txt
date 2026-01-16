@@ -1,0 +1,16 @@
+Hello {{ user.first_name|default:'there' }},
+
+Thank you for signing up for {{ site_name }}! To complete your registration, 
+please verify your email address by clicking the link below:
+
+{{ verification_url }}
+
+If you did not create an account with us, please ignore this email or 
+contact support at {{ support_email }} if you have any questions.
+
+Thanks,
+The {{ site_name }} Team
+
+---
+{{ site_name }}
+{{ support_email }}

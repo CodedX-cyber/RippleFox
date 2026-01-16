@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load permission_tags %}
+
+{% block content %}
+<div class="pb-5 border-b border-gray-200">
+    <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+    <p class="mt-2 text-sm text-gray-500">Welcome back, {{ user.get_full_name|default:user.email }}!</p>
+</div>
+
+<!-- Role Indicators -->
+<div class="mt-6">
+    <div class="flex flex-wrap gap-2 mb-6">
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+            {{ user.get_role_display|default:'User' }}
+        </span>
+        {% for role in roles %}
+            <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                {{ role|title }}
+            </span>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- CEO Dashboard -->
+{% if is_ceo and ceo_dashboard %}
+<div class="mt-8">
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ ceo_dashboard.title }}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {% for metric in ceo_dashboard.metrics %}
+        <div class="bg-white overflow-hidden shadow rounded-lg dashboard-card">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                        <i class="fas fa-chart-line text-white"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dl>
+                            <dt class="text-sm font-medium text-gray-500 truncate">{{ metric.name }}</dt>
+                            <dd class="flex items-baseline">
+                                <div class="text-2xl font-semibold text-gray-900">{{ metric.value }}</div>
+                                <div class="ml-2 flex items-baseline text-sm font-semibold text-green-600">
+                                    {{ metric.change }}
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Tech Dashboard -->
+{% if tech_dashboard and is_cto or is_it_admin %}
+<div class="mt-8">
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ tech_dashboard.title }}</h2>
+    <div class="bg-white shadow overflow-hidden sm:rounded-md">
+        <ul class="divide-y divide-gray-200">
+            {% for system in tech_dashboard.systems %}
+            <li>
+                <div class="px-4 py-4 flex items-center sm:px-6">
+                    <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
+                        <div class="truncate">
+                            <div class="flex text-sm">
+                                <p class="font-medium text-indigo-600 truncate">{{ system.name }}</p>
+                                <p class="ml-1 flex-shrink-0 font-normal text-gray-500">is {{ system.status }}</p>
+                            </div>
+                            <div class="mt-2 flex">
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i>
+                                    <p>Uptime: {{ system.uptime }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-5 flex-shrink-0">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            {{ system.status|title }}
+                        </span>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<!-- HR Dashboard -->
+{% if hr_dashboard and is_hr or is_admin_staff %}
+<div class="mt-8">
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ hr_dashboard.title }}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {% for stat in hr_dashboard.stats %}
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                        <i class="fas fa-users text-white"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <dt class="text-sm font-medium text-gray-500 truncate">
+                            {{ stat.name }}
+                        </dt>
+                        <dd class="flex items-baseline">
+                            <div class="text-2xl font-semibold text-gray-900">
+                                {{ stat.value }}
+                            </div>
+                        </dd>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- General Dashboard for all users -->
+<div class="mt-8">
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h2>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {% if user|has_permission:'can_view_reports' %}
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                        <i class="fas fa-chart-bar text-white"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <h3 class="text-lg font-medium text-gray-900">View Reports</h3>
+                        <p class="mt-1 text-sm text-gray-500">Access detailed reports and analytics.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-5 py-3">
+                <div class="text-sm">
+                    <a href="{% url 'users:reports' %}" class="font-medium text-indigo-600 hover:text-indigo-500">View all reports</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if user|has_permission:'can_manage_users' %}
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                        <i class="fas fa-users-cog text-white"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <h3 class="text-lg font-medium text-gray-900">Manage Users</h3>
+                        <p class="mt-1 text-sm text-gray-500">Add, edit, or remove users.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-5 py-3">
+                <div class="text-sm">
+                    <a href="{% url 'users:manage_users' %}" class="font-medium text-indigo-600 hover:text-indigo-500">Manage users</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                        <i class="fas fa-cog text-white"></i>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                        <h3 class="text-lg font-medium text-gray-900">Settings</h3>
+                        <p class="mt-1 text-sm text-gray-500">Update your profile and preferences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-5 py-3">
+                <div class="text-sm">
+                    <a href="{% url 'users:settings' %}" class="font-medium text-indigo-600 hover:text-indigo-500">Update settings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Information -->
+<div class="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">User Information</h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">Your account details and permissions.</p>
+    </div>
+    <div class="border-t border-gray-200">
+        <dl>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Email address</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.email }}</dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Full name</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.get_full_name|default:'Not provided' }}</dd>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Account status</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    {% if user.is_active %}
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                    {% else %}
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Inactive</span>
+                    {% endif %}
+                </dd>
+            </div>
+            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Last login</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.last_login|default:'Never' }}</dd>
+            </div>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">Date joined</dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{ user.date_joined }}</dd>
+            </div>
+        </dl>
+    </div>
+</div>
+{% endblock %}

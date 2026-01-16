@@ -1,0 +1,133 @@
+/* Main colors */
+:root {
+    --primary: #4a6cf7;
+    --primary-dark: #3a5bd9;
+    --secondary: #6c757d;
+    --light: #f8f9fa;
+    --dark: #212529;
+}
+
+/* Base styles */
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f5f7fb;
+    color: #333;
+}
+
+/* Header */
+#header {
+    background: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#branding h1 {
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Sidebar */
+#content-related {
+    background: #fff;
+    border-right: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+}
+
+/* Content */
+#content {
+    margin-left: 250px;
+    padding: 2rem;
+    background: #fff;
+    min-height: 100vh;
+}
+
+/* Cards */
+.dashboard .module {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.button, input[type=submit], input[type=button] {
+    background: var(--primary);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+/* Forms */
+input[type=text], input[type=password], input[type=email], select {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 100%;
+}
+
+/* Tables */
+#result_list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#result_list th, #result_list td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    #content-related { display: none; }
+    #content { margin-left: 0; padding: 1rem; }
+}
+
+/* Login page */
+.login #content {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Custom utility classes */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+/* Custom sidebar navigation */
+.app-list {
+    list-style: none;
+    padding: 0;
+}
+
+.app-list a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: #555;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.app-list a:hover {
+    background: rgba(74, 108, 247, 0.1);
+    color: var(--primary);
+}

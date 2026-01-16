@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load permission_tags %}
+
+{% block content %}
+<div class="pb-5 border-b border-gray-200">
+    <h1 class="text-3xl font-bold text-gray-900">Settings</h1>
+    <p class="mt-2 text-sm text-gray-500">Manage your profile and application preferences.</p>
+</div>
+
+<!-- Profile Settings -->
+<div class="mt-8">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Profile Information</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">Update your personal information and contact details.</p>
+        </div>
+        <div class="border-t border-gray-200">
+            <form class="px-4 py-5 sm:p-6">
+                <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
+                        <input type="text" id="first_name" name="first_name" value="{{ user.first_name|default:'' }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="last_name" class="block text-sm font-medium text-gray-700">Last name</label>
+                        <input type="text" id="last_name" name="last_name" value="{{ user.last_name|default:'' }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                        <input type="email" id="email" name="email" value="{{ user.email }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" readonly>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="phone_number" class="block text-sm font-medium text-gray-700">Phone number</label>
+                        <input type="tel" id="phone_number" name="phone_number" value="{{ user.phone_number|default:'' }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+
+                    <div class="col-span-6">
+                        <label for="bio" class="block text-sm font-medium text-gray-700">About</label>
+                        <div class="mt-1">
+                            <textarea id="bio" name="bio" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md">{{ user.profile.bio|default:'' }}</textarea>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-500">Brief description for your profile.</p>
+                    </div>
+
+                    <div class="col-span-6">
+                        <label for="profile_picture" class="block text-sm font-medium text-gray-700">Photo</label>
+                        <div class="mt-1 flex items-center">
+                            <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                <img src="{{ user.profile_picture|default:'/static/images/default-avatar.png' }}" alt="" class="h-full w-full object-cover">
+                            </span>
+                            <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Change
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Save Profile
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Preferences -->
+<div class="mt-8">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Preferences</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">Customize your application experience.</p>
+        </div>
+        <div class="border-t border-gray-200">
+            <form class="px-4 py-5 sm:p-6">
+                <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="language" class="block text-sm font-medium text-gray-700">Language</label>
+                        <select id="language" name="language" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="en" {% if user.settings.language == 'en' %}selected{% endif %}>English</option>
+                            <option value="es" {% if user.settings.language == 'es' %}selected{% endif %}>Spanish</option>
+                            <option value="fr" {% if user.settings.language == 'fr' %}selected{% endif %}>French</option>
+                            <option value="de" {% if user.settings.language == 'de' %}selected{% endif %}>German</option>
+                        </select>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="timezone" class="block text-sm font-medium text-gray-700">Timezone</label>
+                        <select id="timezone" name="timezone" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="UTC" {% if user.settings.timezone == 'UTC' %}selected{% endif %}>UTC</option>
+                            <option value="America/New_York" {% if user.settings.timezone == 'America/New_York' %}selected{% endif %}>Eastern Time</option>
+                            <option value="America/Chicago" {% if user.settings.timezone == 'America/Chicago' %}selected{% endif %}>Central Time</option>
+                            <option value="America/Denver" {% if user.settings.timezone == 'America/Denver' %}selected{% endif %}>Mountain Time</option>
+                            <option value="America/Los_Angeles" {% if user.settings.timezone == 'America/Los_Angeles' %}selected{% endif %}>Pacific Time</option>
+                            <option value="Europe/London" {% if user.settings.timezone == 'Europe/London' %}selected{% endif %}>London</option>
+                            <option value="Europe/Paris" {% if user.settings.timezone == 'Europe/Paris' %}selected{% endif %}>Paris</option>
+                            <option value="Asia/Tokyo" {% if user.settings.timezone == 'Asia/Tokyo' %}selected{% endif %}>Tokyo</option>
+                        </select>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="theme" class="block text-sm font-medium text-gray-700">Theme</label>
+                        <select id="theme" name="theme" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="light" {% if user.settings.theme == 'light' %}selected{% endif %}>Light</option>
+                            <option value="dark" {% if user.settings.theme == 'dark' %}selected{% endif %}>Dark</option>
+                            <option value="auto" {% if user.settings.theme == 'auto' %}selected{% endif %}>Auto</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Save Preferences
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Notifications -->
+<div class="mt-8">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Notifications</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">Manage how you receive notifications.</p>
+        </div>
+        <div class="border-t border-gray-200">
+            <form class="px-4 py-5 sm:p-6">
+                <fieldset>
+                    <legend class="text-base font-medium text-gray-900">Email Notifications</legend>
+                    <div class="mt-4 space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <input type="checkbox" id="email_notifications" name="email_notifications" {% if user.settings.email_notifications %}checked{% endif %} class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                            </div>
+                            <div class="ml-3">
+                                <label for="email_notifications" class="font-medium text-gray-700">Account Activity</label>
+                                <p class="text-gray-500">Receive emails about your account activity and security alerts.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <input type="checkbox" id="marketing_emails" name="marketing_emails" {% if user.settings.marketing_emails %}checked{% endif %} class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                            </div>
+                            <div class="ml-3">
+                                <label for="marketing_emails" class="font-medium text-gray-700">Marketing Emails</label>
+                                <p class="text-gray-500">Receive emails about new products, features, and more.</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="mt-6">
+                    <legend class="text-base font-medium text-gray-900">Push Notifications</legend>
+                    <div class="mt-4 space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <input type="checkbox" id="push_notifications" name="push_notifications" {% if user.settings.push_notifications %}checked{% endif %} class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                            </div>
+                            <div class="ml-3">
+                                <label for="push_notifications" class="font-medium text-gray-700">Browser Push</label>
+                                <p class="text-gray-500">Receive push notifications in your browser when you're online.</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="mt-6">
+                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Save Notifications
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Security -->
+<div class="mt-8">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Security</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">Manage your password and authentication settings.</p>
+        </div>
+        <div class="border-t border-gray-200">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-md font-medium text-gray-900">Change Password</h4>
+                        <p class="mt-1 text-sm text-gray-500">Update your password to keep your account secure.</p>
+                        <div class="mt-4">
+                            <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Change Password
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h4 class="text-md font-medium text-gray-900">Two-Factor Authentication</h4>
+                        <p class="mt-1 text-sm text-gray-500">Add an extra layer of security to your account.</p>
+                        <div class="mt-4">
+                            <button class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Enable 2FA
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="border-t pt-6">
+                        <h4 class="text-md font-medium text-gray-900">Active Sessions</h4>
+                        <p class="mt-1 text-sm text-gray-500">Manage your active sessions across devices.</p>
+                        <div class="mt-4">
+                            <button class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                View Sessions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Danger Zone -->
+<div class="mt-8">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6 bg-red-50">
+            <h3 class="text-lg leading-6 font-medium text-red-900">Danger Zone</h3>
+            <p class="mt-1 max-w-2xl text-sm text-red-500">Irreversible and destructive actions.</p>
+        </div>
+        <div class="border-t border-gray-200">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="text-md font-medium text-gray-900">Delete Account</h4>
+                            <p class="mt-1 text-sm text-gray-500">Permanently delete your account and all associated data.</p>
+                        </div>
+                        <button class="inline-flex justify-center py-2 px-4 border border-red-300 shadow-sm text-sm font-medium rounded-md text-red-700 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            Delete Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
