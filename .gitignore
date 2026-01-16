@@ -11,3 +11,7 @@ debug.log
 *.log
 *.sqlite3
 .DS_Store
+frontend/build/
+.env
+*.map
+node_modules/
