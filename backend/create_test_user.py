@@ -25,7 +25,7 @@ def create_test_user():
     
     # Create or get test user
     email = 'testadmin@ripplefox.com'
-    password = 'Test123!*_'
+    password = ''
     
     user, created = User.objects.get_or_create(
         email=email,
