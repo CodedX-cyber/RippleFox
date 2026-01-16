@@ -22,8 +22,6 @@ import {
   ArrowForward as ArrowForwardIcon,
   CheckCircle as CheckIcon,
   Engineering as EngineeringIcon,
-  Construction as ConstructionIcon,
-  SupportAgent as SupportAgentIcon,
   SettingsSuggest as SettingsSuggestIcon
 } from '@mui/icons-material';
 
