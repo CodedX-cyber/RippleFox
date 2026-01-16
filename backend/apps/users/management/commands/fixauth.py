@@ -8,7 +8,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         User = get_user_model()
         email = 'kingalale@gmail.com'
-        password = '2025Volts2026$$'
+        password = ''
 
         try:
             # Check database connection
