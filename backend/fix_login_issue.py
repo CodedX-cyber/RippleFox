@@ -21,7 +21,7 @@ except Exception as e:
 
 User = get_user_model()
 email = 'kingalale@gmail.com'
-password = '2025Volts2026$$'  # The password you want to set
+password = ''  # The password you want to set
 
 print("\n=== User Account Check ===")
 try:
