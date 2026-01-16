@@ -448,7 +448,7 @@ const HomePage = () => {
             What we do
           </Typography>
           <Typography variant="body1" align="center" sx={{ mb: 6, maxWidth: 640, mx: 'auto', opacity: 0.8 }}>
-            Siatech Africa builds tailored solutions by deeply understanding each client’s needs and translating them into reliable infrastructure outcomes.
+            Ripple Fox builds tailored solutions by deeply understanding each client’s needs and translating them into reliable infrastructure outcomes.
           </Typography>
           <Grid container spacing={4} justifyContent="center">
             {services.map((service) => (
@@ -575,17 +575,17 @@ const HomePage = () => {
             <Grid item xs={12} md={5}>
               <Card sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3, background: theme.palette.primary.dark, color: '#fff' }}>
                 <Typography variant="h6" sx={{ mb: 3, fontWeight: 700 }}>
-                  GET IN TOUCH
+                  Contact Us 
                 </Typography>
                 <Stack spacing={2}>
                   <Typography variant="body2">
-                    <strong>Address:</strong> 3 Bole Onasanya Crescent, Ogudu Lagos
+                    <strong>Address:</strong> 123 Business Avenue, Tech City, 10001
                   </Typography>
                   <Typography variant="body2">
-                    <strong>Email:</strong> enquiry@siatechafrica.com
+                    <strong>Email:</strong> info@ripplefox.co
                   </Typography>
                   <Typography variant="body2">
-                    <strong>Phone:</strong> +234 811 227 0000
+                    <strong>Phone:</strong> +1 (555) 123-4567
                   </Typography>
                 </Stack>
               </Card>
