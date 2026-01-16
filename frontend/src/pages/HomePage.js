@@ -6,8 +6,6 @@ import {
   Button, 
   Grid, 
   Card, 
-  CardContent, 
-  CardMedia,
   Paper,
   useTheme,
   useMediaQuery,

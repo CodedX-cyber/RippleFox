@@ -147,7 +147,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (formData) => {
     try {
       console.log('Sending registration request with data:', formData);
-      const response = await api.post('/auth/register/', formData, {
+      await api.post('/auth/register/', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -496,6 +496,7 @@ export const AuthProvider = ({ children }) => {
     // Core authentication methods
     register,
     login,
+    loginWithMFA,
     logout,
     // refreshToken,
     

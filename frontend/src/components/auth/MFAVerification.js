@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { 
   Box, Button, Typography, Paper, TextField, 
-  CircularProgress, Link, Divider
+  CircularProgress
 } from '@mui/material';
 import { Lock as LockIcon } from '@mui/icons-material';
 import { useAuth } from '../../contexts/AuthContext';
