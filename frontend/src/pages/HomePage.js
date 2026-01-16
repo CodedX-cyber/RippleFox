@@ -7,6 +7,9 @@ import {
   Grid, 
   Card, 
   Paper,
+  Stack,
+  TextField,
+  Divider,
   useTheme,
   useMediaQuery,
   alpha
@@ -17,7 +20,11 @@ import {
   Security as SecurityIcon, 
   Speed as SpeedIcon,
   ArrowForward as ArrowForwardIcon,
-  CheckCircle as CheckIcon
+  CheckCircle as CheckIcon,
+  Engineering as EngineeringIcon,
+  Construction as ConstructionIcon,
+  SupportAgent as SupportAgentIcon,
+  SettingsSuggest as SettingsSuggestIcon
 } from '@mui/icons-material';
 
 const features = [
@@ -45,6 +52,76 @@ const benefits = [
   'User-friendly Interface',
   'Regular Updates',
   'Data Analytics'
+];
+
+const coreValues = [
+  'Honesty & Ethics',
+  'Customer Focus',
+  'Innovation',
+  'Accountability',
+  'Excellence',
+  'Team Work'
+];
+
+const services = [
+  {
+    title: 'SaaS Product Strategy',
+    icon: <SettingsSuggestIcon fontSize="large" color="secondary" />, 
+    bullets: [
+      'Roadmap refinement & discovery workshops',
+      'Platform architecture & scalability planning',
+      'User experience blueprints',
+      'Roadmap coaching for internal teams'
+    ]
+  },
+  {
+    title: 'Project Leadership & Consulting',
+    icon: <FlashIcon fontSize="large" color="secondary" />, 
+    bullets: [
+      'Agile delivery & product management',
+      'Technical advisory for CTOs/VPs',
+      'Change management & enablement',
+      'Performance reviews and mentoring'
+    ]
+  },
+  {
+    title: 'Web, Mobile & ERP Engineering',
+    icon: <EngineeringIcon fontSize="large" color="secondary" />, 
+    bullets: [
+      'Custom web & mobile app development',
+      'ERP implementation & integrations',
+      'API-first ecosystems & automation',
+      'Maintenance, support, and scaling'
+    ]
+  }
+];
+
+const statHighlights = [
+  {
+    title: 'Product Velocity',
+    description: 'We compress discovery, design, and delivery so your SaaS roadmap launches reliably.'
+  },
+  {
+    title: 'Trusted Advisors',
+    description: 'Fractional CTO/PM leadership keeps every initiative aligned to business outcomes.'
+  },
+  {
+    title: 'ERP Ready',
+    description: 'We align off-the-shelf suites or bespoke stacks with your people and processes.'
+  }
+];
+
+const metrics = [
+  { label: 'Engineers on the ground', value: '100+' },
+  { label: 'Portfolios delivered', value: '5+' },
+  { label: 'Satisfied clients', value: '8+' }
+];
+
+const partnerLogos = [
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/IHS_Inc._logo.svg/2560px-IHS_Inc._logo.svg.png',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Omnicom_logo.svg/2560px-Omnicom_logo.svg.png',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Huawei.svg/1200px-Huawei.svg.png',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/ABLOY_logo.svg/2560px-ABLOY_logo.svg.png'
 ];
 
 const HomePage = () => {
@@ -78,7 +155,7 @@ const HomePage = () => {
                 component="p" 
                 sx={{ mb: 4, opacity: 0.9 }}
               >
-                Innovative solutions for a digital world. Transform your business with our cutting-edge technology.
+                SaaS products, project leadership, and technical guidance crafted to accelerate your digital initiatives.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button
@@ -141,6 +218,100 @@ const HomePage = () => {
               />
             </Grid>
           </Grid>
+        </Container>
+      </Box>
+
+      {/* About Section */}
+      <Box component="section" sx={{ py: { xs: 8, md: 12 }, backgroundColor: 'background.default' }}>
+        <Container maxWidth="lg">
+          <Grid container spacing={6} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <Typography variant="h5" gutterBottom sx={{ color: theme.palette.primary.main, fontWeight: 600 }}>
+                About Us
+              </Typography>
+              <Typography variant="h3" component="h2" sx={{ fontWeight: 700, mb: 3 }}>
+                Infrastructure engineering services.
+              </Typography>
+              <Typography sx={{ color: 'text.secondary' }}>
+                Ripple Fox creates SaaS platforms, orchestrates high-impact projects, and consults on digital transformation so teams can deliver faster.
+                From product vision to ERP deployment, our experts guide every phase with clarity and accountability.
+              </Typography>
+              <Button
+                component={Link}
+                to="/about"
+                variant="text"
+                color="primary"
+                endIcon={<ArrowForwardIcon />}
+                sx={{ mt: 4, textTransform: 'none', fontWeight: 600 }}
+              >
+                Learn more
+              </Button>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box
+                component="img"
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                alt="Infrastructure"
+                sx={{
+                  width: '100%',
+                  borderRadius: 4,
+                  boxShadow: theme.shadows[8]
+                }}
+              />
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Core Values Section */}
+      <Box component="section" sx={{ py: 10, backgroundColor: '#f6f9ff' }}>
+        <Container maxWidth="md">
+          <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 6 }}>
+            Our Core Values
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 2, mb: 4 }}>
+            {coreValues.map((value) => (
+              <Box
+                key={value}
+                sx={{
+                  width: 160,
+                  height: 120,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  fontWeight: 600,
+                  color: '#0d1d3a',
+                  backgroundColor: '#fff',
+                  border: '1px solid #dfe7f5',
+                  borderRadius: 3,
+                  boxShadow: theme.shadows[2],
+                  clipPath: 'polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)'
+                }}
+              >
+                <Typography sx={{ px: 1 }}>{value}</Typography>
+              </Box>
+            ))}
+            <Box
+              sx={{
+                width: 160,
+                height: 120,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                fontWeight: 700,
+                color: '#fff',
+                backgroundColor: theme.palette.primary.main,
+                borderRadius: 3,
+                boxShadow: theme.shadows[4],
+                clipPath: 'polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)',
+                mt: { xs: 4, md: 0 }
+              }}
+            >
+              <Typography sx={{ px: 1 }}>RIPPLE FOX</Typography>
+            </Box>
+          </Box>
         </Container>
       </Box>
 
@@ -263,6 +434,193 @@ const HomePage = () => {
             </Grid>
           </Grid>
         </Container>
+      </Box>
+
+      {/* Services Section */}
+      <Box
+        component="section"
+        sx={{
+          py: { xs: 10, md: 14 },
+          backgroundColor: '#070b1a',
+          color: '#fff'
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ fontWeight: 700, mb: 6 }}>
+            What we do
+          </Typography>
+          <Typography variant="body1" align="center" sx={{ mb: 6, maxWidth: 640, mx: 'auto', opacity: 0.8 }}>
+            Siatech Africa builds tailored solutions by deeply understanding each client’s needs and translating them into reliable infrastructure outcomes.
+          </Typography>
+          <Grid container spacing={4} justifyContent="center">
+            {services.map((service) => (
+              <Grid item xs={12} md={4} key={service.title}>
+                <Card
+                  sx={{
+                    minHeight: 360,
+                    backgroundColor: '#0b1230',
+                    color: '#fff',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: 3,
+                    px: 4,
+                    py: 4,
+                    boxShadow: 'none'
+                  }}
+                >
+                  <Stack spacing={2}>
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      {service.icon}
+                      <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                        {service.title}
+                      </Typography>
+                    </Stack>
+                    <Divider sx={{ borderColor: 'rgba(255,255,255,0.2)' }} />
+                    <Stack spacing={1.2}>
+                      {service.bullets.map((bullet) => (
+                        <Stack key={bullet} direction="row" spacing={1} alignItems="flex-start">
+                          <CheckIcon sx={{ fontSize: 18, color: '#2fb1ff', mt: 0.5 }} />
+                          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.75)' }}>
+                            {bullet}
+                          </Typography>
+                        </Stack>
+                      ))}
+                    </Stack>
+                  </Stack>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Stats & Trust Section */}
+      <Box component="section" sx={{ backgroundColor: '#05070e', color: '#fff', py: { xs: 10, md: 14 } }}>
+        <Container maxWidth="lg">
+          <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 4 }}>
+            Why Siatech Africa?
+          </Typography>
+          <Typography align="center" sx={{ mb: 6, maxWidth: 720, mx: 'auto', color: 'rgba(255,255,255,0.8)' }}>
+            Business developers, engineers, and analysts collaborate to deliver dependable infrastructure with agility and integrity.
+          </Typography>
+          <Grid container spacing={4} justifyContent="center">
+            {statHighlights.map((highlight) => (
+              <Grid item xs={12} md={4} key={highlight.title}>
+                <Paper
+                  elevation={4}
+                  sx={{
+                    borderRadius: 2,
+                    px: 3,
+                    py: 4,
+                    textAlign: 'center'
+                  }}
+                >
+                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                    {highlight.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    {highlight.description}
+                  </Typography>
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+          <Grid container spacing={3} sx={{ mt: 6 }}>
+            {metrics.map((metric) => (
+              <Grid item xs={12} md={4} key={metric.label}>
+                <Box
+                  sx={{
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: 2,
+                    p: 3,
+                    textAlign: 'center',
+                    backgroundColor: 'rgba(255,255,255,0.04)'
+                  }}
+                >
+                  <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                    {metric.value}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                    {metric.label}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+          <Typography variant="subtitle1" align="center" sx={{ mt: 6, mb: 3, color: 'rgba(255,255,255,0.7)' }}>
+            Trusted by 10+ businesses
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 4, alignItems: 'center' }}>
+            {partnerLogos.map((logo) => (
+              <Box key={logo} component="img" src={logo} alt="partner" sx={{ height: 40, opacity: 0.85 }} />
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Contact Section */}
+      <Box
+        component="section"
+        sx={{
+          position: 'relative',
+          backgroundColor: '#f5f8ff',
+          pb: 0
+        }}
+      >
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, pt: { xs: 10, md: 12 }, pb: { xs: 12, md: 16 } }}>
+          <Typography variant="h4" align="center" sx={{ fontWeight: 700, mb: 2 }}>
+            Want to work with us?
+          </Typography>
+          <Typography align="center" sx={{ mb: 6, color: 'text.secondary' }}>
+            Share your business needs and one of our delivery specialists will get back to you shortly.
+          </Typography>
+          <Grid container spacing={4} justifyContent="center">
+            <Grid item xs={12} md={5}>
+              <Card sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3, background: theme.palette.primary.dark, color: '#fff' }}>
+                <Typography variant="h6" sx={{ mb: 3, fontWeight: 700 }}>
+                  GET IN TOUCH
+                </Typography>
+                <Stack spacing={2}>
+                  <Typography variant="body2">
+                    <strong>Address:</strong> 3 Bole Onasanya Crescent, Ogudu Lagos
+                  </Typography>
+                  <Typography variant="body2">
+                    <strong>Email:</strong> enquiry@siatechafrica.com
+                  </Typography>
+                  <Typography variant="body2">
+                    <strong>Phone:</strong> +234 811 227 0000
+                  </Typography>
+                </Stack>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              <Paper sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3 }}>
+                <Typography variant="h6" sx={{ mb: 3, fontWeight: 700 }}>
+                  CONTACT US
+                </Typography>
+                <Stack spacing={2}>
+                  <TextField fullWidth label="First Name" variant="outlined" size="small" />
+                  <TextField fullWidth label="Last Name" variant="outlined" size="small" />
+                  <TextField fullWidth label="Email" variant="outlined" size="small" />
+                  <TextField fullWidth label="Phone" variant="outlined" size="small" />
+                  <TextField fullWidth label="Message" variant="outlined" size="small" multiline rows={3} />
+                  <Button variant="contained" color="primary" sx={{ textTransform: 'none' }}>Send</Button>
+                </Stack>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Container>
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 160,
+            background: 'linear-gradient(180deg, #0f3c8b, #05070e)',
+            borderTopLeftRadius: '50% 20%',
+            borderTopRightRadius: '50% 20%'
+          }}
+        />
       </Box>
 
       {/* CTA Section */}
