@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Typography, TextField, Button, Grid, Box, Paper } from '@mui/material';
-import { Email, Phone, LocationOn } from '@mui/icons-material';
+import { Container, Typography, TextField, Button, Grid, Box, Paper, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Email, Phone, LocationOn, AccessTime, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 
 const ContactPage = () => {
   const handleSubmit = (e) => {
@@ -33,6 +33,10 @@ const ContactPage = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: 'rgba(25, 118, 210, 0.04)', transform: 'translateX(5px)' } }}>
                 <LocationOn color="primary" sx={{ mr: 2 }} />
                 <Typography>123 Business Avenue, Tech City, 10001</Typography>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: 'rgba(25, 118, 210, 0.04)', transform: 'translateX(5px)' } }}>
+                <AccessTime color="primary" sx={{ mr: 2 }} />
+                <Typography>Business Hours: Mon-Fri 9AM-6PM</Typography>
               </Box>
             </Box>
           </Grid>
@@ -101,6 +105,56 @@ const ContactPage = () => {
             </Paper>
           </Grid>
         </Grid>
+
+        <Box sx={{ mt: 8 }}>
+          <Typography variant="h4" component="h2" gutterBottom align="center">
+            Our Location
+          </Typography>
+          <Box sx={{ height: 400, width: '100%', borderRadius: 2, overflow: 'hidden', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.221990877551!2d-74.0036936845932!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2s123%20Business%20Ave%2C%20New%20York%2C%20NY%2010001%2C%20USA!5e0!3m2!1sen!2sus!4v1634567890123!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Our Location"
+            ></iframe>
+          </Box>
+        </Box>
+
+        <Box sx={{ mt: 8 }}>
+          <Typography variant="h4" component="h2" gutterBottom align="center">
+            Frequently Asked Questions
+          </Typography>
+          <Box sx={{ maxWidth: 800, mx: 'auto' }}>
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography>How can I contact you?</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>You can contact us via email at info@ripplefox.co or by phone at +234 904 431 9888.</Typography>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography>What are your business hours?</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>Our business hours are Monday to Friday, 9 AM to 6 PM.</Typography>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography>What services do you offer?</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>We offer a wide range of services including technology, energy, IT consulting, project management, and financial services.</Typography>
+              </AccordionDetails>
+            </Accordion>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
