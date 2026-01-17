@@ -40,8 +40,43 @@ const AboutPage = () => {
   return (
     <Box>
       {/* Hero Section */}
-      <Box sx={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white', py: 12, textAlign: 'center' }}>
-        <Container maxWidth="lg">
+      <Box
+        sx={{
+          position: 'relative',
+          minHeight: 420,
+          color: 'white',
+          overflow: 'hidden',
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.5) 60%, rgba(15,23,42,0.85) 100%)',
+            zIndex: 1,
+          },
+        }}
+      >
+        <Box
+          component="img"
+          src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80"
+          alt="Ripple Fox team loft building"
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0,
+          }}
+        />
+        <Container
+          maxWidth="lg"
+          sx={{
+            position: 'relative',
+            zIndex: 2,
+            py: { xs: 8, md: 12 },
+            textAlign: 'center',
+          }}
+        >
           <Typography variant="h2" component="h1" gutterBottom>
             About Ripple Fox
           </Typography>
