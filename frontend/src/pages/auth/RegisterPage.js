@@ -145,7 +145,7 @@ const RegisterPage = () => {
   const handleMouseDownPassword = (event) => event.preventDefault();
 
   return (
-    <Container component="main" maxWidth="sm" sx={{ mt: 4, mb: 8 }}>
+    <Container component="main" maxWidth="sm" sx={{ mt: 4, mb: 8, background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Fade in={showForm} timeout={800}>
         <Paper
           elevation={3}
@@ -155,7 +155,9 @@ const RegisterPage = () => {
             flexDirection: 'column',
             alignItems: 'center',
             borderRadius: 2,
-            backgroundColor: 'background.paper',
+            backgroundColor: 'rgba(255, 255, 255, 0.25)',
+            border: '1px solid rgba(255, 255, 255, 0.5)',
+            backdropFilter: 'blur(10px)',
           }}
         >
           <Box
@@ -411,7 +413,9 @@ const RegisterPage = () => {
                 fontSize: '1rem',
                 fontWeight: 600,
                 boxShadow: 'none',
+                background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
                 '&:hover': {
+                  background: 'linear-gradient(45deg, #1976D2 30%, #00BCD4 90%)',
                   boxShadow: '0 4px 12px rgba(74, 108, 247, 0.3)',
                 },
               }}

@@ -108,11 +108,10 @@ const LoginPage = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Fade in={showWelcome} timeout={500}>
         <Box
           sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -122,7 +121,7 @@ const LoginPage = () => {
             Sign in to your account
           </Typography>
           
-          <Paper elevation={3} sx={{ p: 4, width: '100%', borderRadius: 2 }}>
+          <Paper elevation={3} sx={{ p: 4, width: '100%', borderRadius: 2, backgroundColor: 'rgba(255, 255, 255, 0.25)', border: '1px solid rgba(255, 255, 255, 0.5)', backdropFilter: 'blur(10px)' }}>
             {serverError && (
               <Alert severity="error" sx={{ mb: 3 }}>
                 {serverError}
@@ -210,7 +209,7 @@ const LoginPage = () => {
                 size="large"
                 disabled={formik.isSubmitting}
                 startIcon={formik.isSubmitting ? <CircularProgress size={20} /> : <LoginIcon />}
-                sx={{ mt: 2, mb: 2, py: 1.5 }}
+                sx={{ mt: 2, mb: 2, py: 1.5, background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)', '&:hover': { background: 'linear-gradient(45deg, #1976D2 30%, #00BCD4 90%)' } }}
               >
                 {formik.isSubmitting ? 'Signing in...' : 'Sign In'}
               </Button>
@@ -223,7 +222,7 @@ const LoginPage = () => {
                     fullWidth
                     variant="outlined"
                     startIcon={<GoogleIcon />}
-                    sx={{ mb: 1 }}
+                    sx={{ mb: 1, '&:hover': { backgroundColor: 'rgba(66, 133, 244, 0.04)' } }}
                     onClick={() => window.location.href = '/api/v1/auth/google/'}
                   >
                     Continue with Google

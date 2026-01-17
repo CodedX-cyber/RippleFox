@@ -129,7 +129,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <Container component="main" maxWidth="sm">
+    <Container component="main" maxWidth="sm" sx={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Fade in={showForm} timeout={500}>
         <Box
           sx={{
@@ -143,7 +143,7 @@ const RegisterPage = () => {
             Create your account
           </Typography>
           
-          <Paper elevation={3} sx={{ p: 4, width: '100%', borderRadius: 2 }}>
+          <Paper elevation={3} sx={{ p: 4, width: '100%', borderRadius: 2, backgroundColor: 'rgba(255, 255, 255, 0.25)', border: '1px solid rgba(255, 255, 255, 0.5)', backdropFilter: 'blur(10px)' }}>
             {serverError && (
               <Alert severity="error" sx={{ mb: 3 }}>
                 {serverError}
@@ -333,7 +333,7 @@ const RegisterPage = () => {
                 variant="contained"
                 size="large"
                 disabled={formik.isSubmitting}
-                sx={{ mt: 2, mb: 3, py: 1.5 }}
+                sx={{ mt: 2, mb: 3, py: 1.5, background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)', '&:hover': { background: 'linear-gradient(45deg, #1976D2 30%, #00BCD4 90%)' } }}
               >
                 {formik.isSubmitting ? (
                   <CircularProgress size={24} color="inherit" />

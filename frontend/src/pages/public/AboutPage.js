@@ -12,7 +12,7 @@ const stats = [
 const team = [
   {
     name: 'Naomi King-Alale',
-    role: 'C00',
+    role: 'COO',
     avatar: 'N',
     bio: 'Operations specialist ensuring seamless business processes.'
   },
@@ -23,16 +23,16 @@ const team = [
     bio: 'Technology expert driving innovation and digital transformation.'
   },
   {
-    name: 'Michael Chen',
-    role: 'CFO',
-    avatar: 'M',
-    bio: 'Financial strategist with a track record of sustainable growth.'
+    name: 'Sharon King-Alale',
+    role: 'Executive Business Partner',
+    avatar: 'S',
+    bio: 'Executive Business Partner providing strategic support and leadership.'
   },
   {
-    name: 'Emily Davis',
-    role: 'MD',
-    avatar: 'E',
-    bio: 'Marketing expert with a track record of successful campaigns.'
+    name: 'Sarah Johnson',
+    role: 'CFO',
+    avatar: 'SJ',
+    bio: 'Financial strategist with a track record of sustainable growth..'
   },
 ];
 
@@ -40,7 +40,7 @@ const AboutPage = () => {
   return (
     <Box>
       {/* Hero Section */}
-      <Box bgcolor="primary.main" color="white" py={12} textAlign="center">
+      <Box sx={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white', py: 12, textAlign: 'center' }}>
         <Container maxWidth="lg">
           <Typography variant="h2" component="h1" gutterBottom>
             About Ripple Fox
@@ -56,7 +56,7 @@ const AboutPage = () => {
         <Container maxWidth="lg">
           <Grid container spacing={4} justifyContent="center">
             {stats.map((stat, index) => (
-              <Grid item xs={6} sm={3} key={index} textAlign="center">
+              <Grid item xs={6} sm={3} key={index} textAlign="center" sx={{ transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
                 <Box mb={1}>
                   {stat.icon}
                 </Box>
@@ -117,7 +117,7 @@ const AboutPage = () => {
           <Grid container spacing={4}>
             {team.map((member, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <Paper elevation={2} sx={{ p: 3, height: '100%' }}>
+                <Paper elevation={2} sx={{ p: 3, height: '100%', transition: 'transform 0.3s, boxShadow 0.3s', '&:hover': { transform: 'translateY(-10px)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' } }}>
                   <Box display="flex" flexDirection="column" alignItems="center" textAlign="center">
                     <Avatar 
                       sx={{ 
