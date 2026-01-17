@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/RippleFox/static/css/main.91173322.css",
-    "main.js": "/RippleFox/static/js/main.79e54ceb.js",
+    "main.js": "/RippleFox/static/js/main.28d41965.js",
     "index.html": "/RippleFox/index.html",
     "main.91173322.css.map": "/RippleFox/static/css/main.91173322.css.map",
-    "main.79e54ceb.js.map": "/RippleFox/static/js/main.79e54ceb.js.map"
+    "main.28d41965.js.map": "/RippleFox/static/js/main.28d41965.js.map"
   },
   "entrypoints": [
     "static/css/main.91173322.css",
-    "static/js/main.79e54ceb.js"
+    "static/js/main.28d41965.js"
   ]
 }
