@@ -43,6 +43,7 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const theme = useTheme();
+
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -181,6 +182,9 @@ const Layout = ({ children }) => {
     </div>
   );
 
+  const logoSrc = theme.palette.mode === 'dark' ? '/ripple-logo-dark.svg' : '/ripple-logo-light.svg';
+  const logoAlt = 'Ripple Fox wordmark';
+
   return (
     <Box sx={{ display: 'flex' }}>
       {/* Top AppBar */}
@@ -208,18 +212,18 @@ const Layout = ({ children }) => {
             </IconButton>
 
             <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-              <Typography
-                variant="h6"
+              <Box
                 component={RouterLink}
                 to="/"
-                sx={{
-                  fontWeight: 700,
-                  color: 'primary.main',
-                  textDecoration: 'none',
-                }}
+                sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
               >
-                RIPPLE FOX
-              </Typography>
+                <Box
+                  component="img"
+                  src={logoSrc}
+                  alt={logoAlt}
+                  sx={{ height: 44, width: 'auto', filter: theme.palette.mode === 'dark' ? 'invert(0.95)' : 'none' }}
+                />
+              </Box>
 
               {/* Desktop public navigation when not logged in */}
               {!isAuthenticated && (

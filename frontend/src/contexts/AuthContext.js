@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext, useCallback } fr
 import { useNavigate, useLocation } from 'react-router-dom';
 import api from '../services/api';
 import { toast } from 'react-toastify';
+import LoadingSplash from '../components/common/LoadingSplash';
 
 // WebSocket configuration
 const WS_CONFIG = {
@@ -522,7 +523,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-      {!isLoading && children}
+      {isLoading ? <LoadingSplash /> : children}
     </AuthContext.Provider>
   );
 };

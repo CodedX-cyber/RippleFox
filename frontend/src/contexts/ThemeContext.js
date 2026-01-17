@@ -1,6 +1,10 @@
 import React, { createContext, useState, useMemo, useContext } from 'react';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 
+const PRIMARY_COLOR = '#1d9cff';
+const SECONDARY_COLOR = '#050608';
+const ACCENT_COLOR = '#10a7ff';
+
 export const ThemeContext = createContext();
 
 export const useThemeContext = () => useContext(ThemeContext);
@@ -26,11 +30,15 @@ export const ThemeProvider = ({ children }) => {
             ? {
                 // Light theme
                 primary: {
-                  main: '#4a6cf7',
-                  contrastText: '#fff',
+                  main: PRIMARY_COLOR,
+                  contrastText: '#ffffff',
                 },
                 secondary: {
-                  main: '#6c757d',
+                  main: SECONDARY_COLOR,
+                  contrastText: '#ffffff',
+                },
+                action: {
+                  active: ACCENT_COLOR,
                 },
                 background: {
                   default: '#f8f9fa',
@@ -40,11 +48,12 @@ export const ThemeProvider = ({ children }) => {
             : {
                 // Dark theme
                 primary: {
-                  main: '#90caf9',
-                  contrastText: '#000',
+                  main: ACCENT_COLOR,
+                  contrastText: '#ffffff',
                 },
                 secondary: {
-                  main: '#ce93d8',
+                  main: SECONDARY_COLOR,
+                  contrastText: '#ffffff',
                 },
                 background: {
                   default: '#121212',
