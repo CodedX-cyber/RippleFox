@@ -77,6 +77,18 @@ const AboutPage = () => {
             textAlign: 'center',
           }}
         >
+          <Box sx={{ mb: 4 }}>
+            <Box
+              component="img"
+              src="https://images.unsplash.com/photo-1553729784-e91953dec042?auto=format&fit=crop&w=400&q=80"
+              alt="Ripple Fox Logo"
+              sx={{
+                height: 80,
+                width: 'auto',
+                filter: 'brightness(0) invert(1)',
+              }}
+            />
+          </Box>
           <Typography variant="h2" component="h1" gutterBottom>
             About Ripple Fox
           </Typography>

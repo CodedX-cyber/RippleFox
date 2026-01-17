@@ -35,6 +35,8 @@ import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import ThemeToggle from './ThemeToggle';
 
+declare const process: { env: { PUBLIC_URL?: string } };
+
 const SIDEBAR_WIDTH = 72;
 const SIDEBAR_EXPANDED_WIDTH = 260;
 
@@ -101,6 +103,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         { text: 'Login', icon: <AccountIcon />, path: '/login', divider: true },
         { text: 'Register', icon: <AccountIcon />, path: '/register' },
       ];
+
+  const publicUrl = process.env.PUBLIC_URL || '';
+  const logoSrc =
+    theme.palette.mode === 'dark'
+      ? `${publicUrl}/ripplefox dark.png`
+      : `${publicUrl}/ripple fox light.png`;
 
   const drawer = (
     <div>
