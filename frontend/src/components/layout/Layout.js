@@ -185,8 +185,8 @@ const Layout = ({ children }) => {
   const publicUrl = process.env.PUBLIC_URL || '';
   const logoSrc =
     theme.palette.mode === 'dark'
-      ? `${publicUrl}/ripplefox dark.png`
-      : `${publicUrl}/ripple fox light.png`;
+      ? `${publicUrl}/ripple fox light.png`
+      : `${publicUrl}/ripplefox dark.png`;
 
   const logoAlt = 'Ripple Fox wordmark';
 
