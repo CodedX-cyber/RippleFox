@@ -23,6 +23,7 @@ import {
   InputLabel,
   OutlinedInput,
   FormHelperText,
+  useTheme,
 } from '@mui/material';
 import {
   Visibility as VisibilityIcon,
@@ -60,6 +61,24 @@ const validationSchema = Yup.object({
 });
 
 const RegisterPage = () => {
+  const theme = useTheme();
+  const heroBackground =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,12,22,1) 100%)'
+      : '#ffffff';
+  const cardBackground =
+    theme.palette.mode === 'dark' ? 'rgba(15,23,42,0.7)' : 'rgba(255, 255, 255, 0.65)';
+  const cardBorder =
+    theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(255, 255, 255, 0.7)';
+  const gradientOverlay =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(120deg, rgba(59,130,246,0.45), rgba(14,165,233,0.3), rgba(59,130,246,0.15))'
+      : 'linear-gradient(120deg, rgba(59,130,246,0.30), rgba(14,165,233,0.20), rgba(59,130,246,0.10))';
+  const accentStripe =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(140deg, rgba(14,165,233,0.2), rgba(59,130,246,0.25), rgba(14,165,233,0.1))'
+      : 'linear-gradient(140deg, rgba(59,130,246,0.25), rgba(14,165,233,0.18), rgba(59,130,246,0.08))';
+  const inputBackground = theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.9)';
   const navigate = useNavigate();
   const location = useLocation();
   const { register: registerUser, isAuthenticated, isLoading } = useAuth();
@@ -129,28 +148,108 @@ const RegisterPage = () => {
   };
 
   return (
-    <Container component="main" maxWidth="sm" sx={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Fade in={showForm} timeout={500}>
+    <Container
+      component="main"
+      maxWidth="sm"
+      sx={{
+        background: heroBackground,
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        px: 0,
+        '@keyframes gradientShift': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        '@keyframes stripeFloat': {
+          '0%': { transform: 'rotate(-7deg) translateX(-10%)' },
+          '50%': { transform: 'rotate(-7deg) translateX(0%)' },
+          '100%': { transform: 'rotate(-7deg) translateX(-10%)' },
+        },
+      }}
+    >
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          background: gradientOverlay,
+          opacity: 0.75,
+          backgroundSize: '200% 200%',
+          animation: 'gradientShift 14s ease infinite',
+          pointerEvents: 'none',
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '8%',
+          left: '-5%',
+          width: '110%',
+          height: '70%',
+          background: accentStripe,
+          borderRadius: '220px',
+          filter: 'blur(0.4px)',
+          opacity: theme.palette.mode === 'dark' ? 0.4 : 0.6,
+          animation: 'stripeFloat 20s ease-in-out infinite',
+          pointerEvents: 'none',
+        }}
+      />
+      <Fade in={showForm} timeout={800}>
         <Box
           sx={{
-            marginTop: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            position: 'relative',
+            zIndex: 1,
+            width: '100%',
           }}
         >
-          <Typography component="h1" variant="h4" sx={{ mb: 3, fontWeight: 'bold' }}>
-            Create your account
-          </Typography>
-          
-          <Paper elevation={3} sx={{ p: 4, width: '100%', borderRadius: 2, backgroundColor: 'rgba(255, 255, 255, 0.25)', border: '1px solid rgba(255, 255, 255, 0.5)', backdropFilter: 'blur(10px)' }}>
+          <Paper
+            elevation={3}
+            sx={{
+              p: { xs: 3, md: 6 },
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              borderRadius: 2,
+              backgroundColor: cardBackground,
+              border: cardBorder,
+              backdropFilter: 'blur(12px)',
+              boxShadow: theme.palette.mode === 'dark' ? '0 15px 40px rgba(0,0,0,0.6)' : '0 15px 40px rgba(0,0,0,0.15)',
+            }}
+          >
+            <Box
+              sx={{
+                width: 60,
+                height: 60,
+                backgroundColor: 'primary.light',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                mb: 3,
+              }}
+            >
+              <PersonIcon color="primary" sx={{ fontSize: 30 }} />
+            </Box>
+            
+            <Typography component="h1" variant="h4" sx={{ mb: 2, fontWeight: 'bold', textAlign: 'center' }}>
+              Create your account
+            </Typography>
+            
+            <Typography variant="body1" color="textSecondary" align="center" sx={{ mb: 4, maxWidth: '80%' }}>
+              Join Ripple Fox and unlock access to our services.
+            </Typography>
+            
             {serverError && (
-              <Alert severity="error" sx={{ mb: 3 }}>
+              <Alert severity="error" sx={{ width: '100%', mb: 3 }}>
                 {serverError}
               </Alert>
             )}
             
-            <Box component="form" onSubmit={formik.handleSubmit} noValidate>
+            <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 1, width: '100%' }} noValidate>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <FormControl fullWidth variant="outlined" margin="normal" required>
