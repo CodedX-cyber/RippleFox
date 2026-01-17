@@ -1,8 +1,18 @@
 import React from 'react';
-import { Container, Typography, TextField, Button, Grid, Box, Paper, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Container, Typography, TextField, Button, Grid, Box, Paper, Accordion, AccordionSummary, AccordionDetails, useTheme } from '@mui/material';
 import { Email, Phone, LocationOn, AccessTime, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 
 const ContactPage = () => {
+  const theme = useTheme();
+  const heroBackground =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,12,22,1) 100%)'
+      : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+  const cardBackground =
+    theme.palette.mode === 'dark'
+      ? 'rgba(15,23,42,0.8)'
+      : 'rgba(255, 255, 255, 0.25)';
+  const cardBorder = theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.5)';
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
@@ -10,7 +20,7 @@ const ContactPage = () => {
   };
 
   return (
-    <Box sx={{ py: 8, background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', minHeight: '100vh' }}>
+    <Box sx={{ py: 8, background: heroBackground, minHeight: '100vh', color: theme.palette.text.primary }}>
       <Container maxWidth="lg">
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
@@ -42,7 +52,17 @@ const ContactPage = () => {
           </Grid>
           
           <Grid item xs={12} md={6}>
-            <Paper elevation={3} sx={{ p: 4, borderRadius: 3, boxShadow: '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255, 255, 255, 0.25)', border: '1px solid rgba(255, 255, 255, 0.5)' }}>
+            <Paper
+            elevation={3}
+            sx={{
+              p: 4,
+              borderRadius: 3,
+              boxShadow: theme.palette.mode === 'dark' ? '0 10px 40px rgba(0,0,0,0.8)' : '0 8px 32px rgba(0,0,0,0.1)',
+              backdropFilter: 'blur(10px)',
+              backgroundColor: cardBackground,
+              border: cardBorder,
+            }}
+          >
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={6}>
