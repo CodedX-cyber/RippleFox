@@ -28,7 +28,7 @@ const ContactPage = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <Phone color="primary" sx={{ mr: 2 }} />
-                <Typography>+1 (555) 123-4567</Typography>
+                <Typography>+234 904 431 9888</Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <LocationOn color="primary" sx={{ mr: 2 }} />

@@ -12,14 +12,14 @@ const stats = [
 const team = [
   {
     name: 'Naomi King-Alale',
-    role: 'CEO & Founder',
-    avatar: 'A',
-    bio: 'Visionary leader with 20+ years of experience in the industry.'
+    role: 'C00',
+    avatar: 'N',
+    bio: 'Operations specialist ensuring seamless business processes.'
   },
   {
     name: 'Israel King-Alale',
-    role: 'CTO & Co-Founder',
-    avatar: 'S',
+    role: 'CTO',
+    avatar: 'I',
     bio: 'Technology expert driving innovation and digital transformation.'
   },
   {
@@ -30,9 +30,9 @@ const team = [
   },
   {
     name: 'Emily Davis',
-    role: 'COO',
+    role: 'MD',
     avatar: 'E',
-    bio: 'Operations specialist ensuring seamless business processes.'
+    bio: 'Marketing expert with a track record of successful campaigns.'
   },
 ];
 
@@ -158,7 +158,7 @@ const AboutPage = () => {
               <Typography variant="body1" paragraph>
                 To empower businesses and communities through innovative solutions that drive sustainable growth and create lasting value.
               </Typography>
-              <Typography variant="h4" component="h3" gutterBottom mt={4}>
+              <Typography variant="h3" component="h2" gutterBottom mt={4}>
                 Our Vision
               </Typography>
               <Typography variant="body1" paragraph>
