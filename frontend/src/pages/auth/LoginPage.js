@@ -50,7 +50,7 @@ const LoginPage = () => {
   const heroBackground =
     theme.palette.mode === 'dark'
       ? 'linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,12,22,1) 100%)'
-      : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+      : '#ffffff';
   const cardBackground =
     theme.palette.mode === 'dark' ? 'rgba(15,23,42,0.7)' : 'rgba(255, 255, 255, 0.65)';
   const cardBorder = theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(255, 255, 255, 0.7)';
@@ -58,6 +58,10 @@ const LoginPage = () => {
     theme.palette.mode === 'dark'
       ? 'linear-gradient(120deg, rgba(59,130,246,0.45), rgba(14,165,233,0.3), rgba(59,130,246,0.15))'
       : 'linear-gradient(120deg, rgba(59,130,246,0.30), rgba(14,165,233,0.20), rgba(59,130,246,0.10))';
+  const accentStripe =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(140deg, rgba(14,165,233,0.2), rgba(59,130,246,0.25), rgba(14,165,233,0.1))'
+      : 'linear-gradient(140deg, rgba(59,130,246,0.25), rgba(14,165,233,0.18), rgba(59,130,246,0.08))';
   const navigate = useNavigate();
   const location = useLocation();
   const { login, isAuthenticated, isLoading } = useAuth();
@@ -148,6 +152,11 @@ const LoginPage = () => {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
+        '@keyframes stripeFloat': {
+          '0%': { transform: 'rotate(-7deg) translateX(-10%)' },
+          '50%': { transform: 'rotate(-7deg) translateX(0%)' },
+          '100%': { transform: 'rotate(-7deg) translateX(-10%)' },
+        },
       }}
     >
       <Box
@@ -158,6 +167,21 @@ const LoginPage = () => {
           opacity: 0.8,
           backgroundSize: '200% 200%',
           animation: 'gradientShift 14s ease infinite',
+          pointerEvents: 'none',
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '8%',
+          left: '-5%',
+          width: '110%',
+          height: '70%',
+          background: accentStripe,
+          borderRadius: '220px',
+          filter: 'blur(0.4px)',
+          opacity: theme.palette.mode === 'dark' ? 0.4 : 0.6,
+          animation: 'stripeFloat 20s ease-in-out infinite',
           pointerEvents: 'none',
         }}
       />
