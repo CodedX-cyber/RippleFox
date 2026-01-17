@@ -20,6 +20,7 @@ import {
   FormControlLabel,
   Checkbox,
   Grid,
+  useTheme,
 } from '@mui/material';
 import {
   Visibility as VisibilityIcon,
@@ -33,6 +34,19 @@ import {
 } from '@mui/icons-material';
 
 const RegisterPage = () => {
+  const theme = useTheme();
+  const heroBackground =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,12,22,1) 100%)'
+      : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+  const cardBackground =
+    theme.palette.mode === 'dark' ? 'rgba(15,23,42,0.7)' : 'rgba(255, 255, 255, 0.65)';
+  const cardBorder = theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(255, 255, 255, 0.7)';
+  const gradientOverlay =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(120deg, rgba(59,130,246,0.45), rgba(14,165,233,0.3), rgba(59,130,246,0.15))'
+      : 'linear-gradient(120deg, rgba(59,130,246,0.30), rgba(14,165,233,0.20), rgba(59,130,246,0.10))';
+  const inputBackground = theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.9)';
   const navigate = useNavigate();
   const location = useLocation();
   const { register, isAuthenticated } = useAuth();
@@ -145,21 +159,59 @@ const RegisterPage = () => {
   const handleMouseDownPassword = (event) => event.preventDefault();
 
   return (
-    <Container component="main" maxWidth="sm" sx={{ mt: 4, mb: 8, background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Container
+      component="main"
+      maxWidth="sm"
+      sx={{
+        mt: 4,
+        mb: 8,
+        background: heroBackground,
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        '@keyframes gradientShift': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      }}
+    >
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          background: gradientOverlay,
+          opacity: 0.75,
+          backgroundSize: '200% 200%',
+          animation: 'gradientShift 14s ease infinite',
+          pointerEvents: 'none',
+        }}
+      />
       <Fade in={showForm} timeout={800}>
-        <Paper
-          elevation={3}
+        <Box
           sx={{
-            p: { xs: 3, md: 6 },
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            borderRadius: 2,
-            backgroundColor: 'rgba(255, 255, 255, 0.25)',
-            border: '1px solid rgba(255, 255, 255, 0.5)',
-            backdropFilter: 'blur(10px)',
+            position: 'relative',
+            zIndex: 1,
+            width: '100%',
           }}
         >
+          <Paper
+            elevation={3}
+            sx={{
+              p: { xs: 3, md: 6 },
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              borderRadius: 2,
+              backgroundColor: cardBackground,
+              border: cardBorder,
+              backdropFilter: 'blur(12px)',
+              boxShadow: theme.palette.mode === 'dark' ? '0 15px 40px rgba(0,0,0,0.6)' : '0 15px 40px rgba(0,0,0,0.15)',
+            }}
+          >
           <Box
             sx={{
               width: 60,
@@ -197,106 +249,85 @@ const RegisterPage = () => {
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  name="firstName"
-                  autoComplete="given-name"
-                  autoFocus
-                  value={formik.values.firstName}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-                  helperText={formik.touched.firstName && formik.errors.firstName}
-                  InputProps={{
-                    startAdornment: (
+                <FormControl fullWidth variant="outlined" margin="normal" required>
+                  <InputLabel htmlFor="firstName">First Name</InputLabel>
+                  <OutlinedInput
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    value={formik.values.firstName}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                    startAdornment={
                       <InputAdornment position="start">
                         <PersonIcon color="action" />
                       </InputAdornment>
-                    ),
-                  }}
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      borderRadius: 2,
-                    },
-                  }}
-                />
+                    }
+                    label="First Name"
+                    sx={{ backgroundColor: inputBackground, color: theme.palette.text.primary }}
+                  />
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                  value={formik.values.lastName}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-                  helperText={formik.touched.lastName && formik.errors.lastName}
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      borderRadius: 2,
-                    },
-                  }}
-                />
+                <FormControl fullWidth variant="outlined" margin="normal" required>
+                  <InputLabel htmlFor="lastName">Last Name</InputLabel>
+                  <OutlinedInput
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    value={formik.values.lastName}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <PersonIcon color="action" />
+                      </InputAdornment>
+                    }
+                    label="Last Name"
+                    sx={{ backgroundColor: inputBackground, color: theme.palette.text.primary }}
+                  />
+                </FormControl>
               </Grid>
             </Grid>
             
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-              InputProps={{
-                startAdornment: (
+            <FormControl fullWidth variant="outlined" margin="normal" required>
+              <InputLabel htmlFor="email">Email Address</InputLabel>
+              <OutlinedInput
+                id="email"
+                name="email"
+                type="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                startAdornment={
                   <InputAdornment position="start">
                     <EmailIcon color="action" />
                   </InputAdornment>
-                ),
-              }}
-              sx={{
-                mt: 2,
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 2,
-                },
-              }}
-            />
+                }
+                label="Email Address"
+                sx={{ backgroundColor: inputBackground, color: theme.palette.text.primary }}
+              />
+            </FormControl>
             
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              autoComplete="new-password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-              InputProps={{
-                startAdornment: (
+            <FormControl fullWidth variant="outlined" margin="normal" required>
+              <InputLabel htmlFor="password">Password</InputLabel>
+              <OutlinedInput
+                id="password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.password && Boolean(formik.errors.password)}
+                startAdornment={
                   <InputAdornment position="start">
                     <LockIcon color="action" />
                   </InputAdornment>
-                ),
-                endAdornment: (
+                }
+                endAdornment={
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
@@ -307,37 +338,28 @@ const RegisterPage = () => {
                       {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                     </IconButton>
                   </InputAdornment>
-                ),
-              }}
-              sx={{
-                mt: 2,
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 2,
-                },
-              }}
-            />
+                }
+                label="Password"
+                sx={{ backgroundColor: inputBackground, color: theme.palette.text.primary }}
+              />
+            </FormControl>
             
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="confirmPassword"
-              label="Confirm Password"
-              type={showConfirmPassword ? 'text' : 'password'}
-              id="confirmPassword"
-              autoComplete="new-password"
-              value={formik.values.confirmPassword}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-              helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
-              InputProps={{
-                startAdornment: (
+            <FormControl fullWidth variant="outlined" margin="normal" required>
+              <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
+              <OutlinedInput
+                id="confirmPassword"
+                name="confirmPassword"
+                type={showConfirmPassword ? 'text' : 'password'}
+                value={formik.values.confirmPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+                startAdornment={
                   <InputAdornment position="start">
                     <LockIcon color="action" />
                   </InputAdornment>
-                ),
-                endAdornment: (
+                }
+                endAdornment={
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle confirm password visibility"
@@ -348,15 +370,11 @@ const RegisterPage = () => {
                       {showConfirmPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                     </IconButton>
                   </InputAdornment>
-                ),
-              }}
-              sx={{
-                mt: 2,
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 2,
-                },
-              }}
-            />
+                }
+                label="Confirm Password"
+                sx={{ backgroundColor: inputBackground, color: theme.palette.text.primary }}
+              />
+            </FormControl>
             
             <FormControlLabel
               control={
@@ -492,6 +510,7 @@ const RegisterPage = () => {
             </Box>
           </Box>
         </Paper>
+      </Box>
       </Fade>
     </Container>
   );

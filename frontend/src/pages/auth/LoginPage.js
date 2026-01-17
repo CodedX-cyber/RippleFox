@@ -23,6 +23,7 @@ import {
   FormControl,
   FormControlLabel,
   Checkbox,
+  useTheme,
 } from '@mui/material';
 import {
   Visibility as VisibilityIcon,
@@ -45,6 +46,18 @@ const validationSchema = Yup.object({
 });
 
 const LoginPage = () => {
+  const theme = useTheme();
+  const heroBackground =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,12,22,1) 100%)'
+      : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
+  const cardBackground =
+    theme.palette.mode === 'dark' ? 'rgba(15,23,42,0.7)' : 'rgba(255, 255, 255, 0.65)';
+  const cardBorder = theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(255, 255, 255, 0.7)';
+  const gradientOverlay =
+    theme.palette.mode === 'dark'
+      ? 'linear-gradient(120deg, rgba(59,130,246,0.45), rgba(14,165,233,0.3), rgba(59,130,246,0.15))'
+      : 'linear-gradient(120deg, rgba(59,130,246,0.30), rgba(14,165,233,0.20), rgba(59,130,246,0.10))';
   const navigate = useNavigate();
   const location = useLocation();
   const { login, isAuthenticated, isLoading } = useAuth();
@@ -118,10 +131,41 @@ const LoginPage = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs" sx={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{
+        background: heroBackground,
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        px: 0,
+        '@keyframes gradientShift': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      }}
+    >
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          background: gradientOverlay,
+          opacity: 0.8,
+          backgroundSize: '200% 200%',
+          animation: 'gradientShift 14s ease infinite',
+          pointerEvents: 'none',
+        }}
+      />
       <Fade in={showWelcome} timeout={500}>
         <Box
           sx={{
+            position: 'relative',
+            zIndex: 1,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -131,7 +175,18 @@ const LoginPage = () => {
             Sign in to your account
           </Typography>
           
-          <Paper elevation={3} sx={{ p: 4, width: '100%', borderRadius: 2, backgroundColor: 'rgba(255, 255, 255, 0.25)', border: '1px solid rgba(255, 255, 255, 0.5)', backdropFilter: 'blur(10px)' }}>
+          <Paper
+            elevation={3}
+            sx={{
+              p: 4,
+              width: '100%',
+              borderRadius: 2,
+              backgroundColor: cardBackground,
+              border: cardBorder,
+              backdropFilter: 'blur(12px)',
+              boxShadow: theme.palette.mode === 'dark' ? '0 15px 40px rgba(0,0,0,0.6)' : '0 15px 40px rgba(0,0,0,0.15)',
+            }}
+          >
             {serverError && (
               <Alert severity="error" sx={{ mb: 3 }}>
                 {serverError}
