@@ -185,10 +185,9 @@ const Layout = ({ children }) => {
   const publicUrl = process.env.PUBLIC_URL || '';
   const logoSrc =
     theme.palette.mode === 'dark'
-      ? `${publicUrl}/ripplefox dark.png`
-      : `${publicUrl}/ripplefox light.png`;
-
-  const logoAlt = 'Ripple Fox wordmark';
+      ? `${publicUrl}/ripplefox-dark.png`
+      : `${publicUrl}/ripplefox-light.png`;
+  const logoAlt = 'Ripple Fox Limited wordmark';
 
   return (
     <Box sx={{ display: 'flex' }}>
