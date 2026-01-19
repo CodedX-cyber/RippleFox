@@ -185,29 +185,13 @@ const Layout = ({ children }) => {
   );
 
   const publicUrl = process.env.PUBLIC_URL || '';
-  const logoSrc =
-    theme.palette.mode === 'dark'
-      ? `${publicUrl}/ripple_fox_limited_white_horizontal.png`
-      : `${publicUrl}/ripple_fox_limited_solid_horizontal.png`;
+  // Use solid logo for both modes until white version is available
+  const logoSrc = `${publicUrl}/ripple_fox_limited_solid_horizontal.png`;
 
   console.log('Current theme mode:', theme.palette.mode);
   console.log('Logo src:', logoSrc);
 
   const logoAlt = 'Ripple Fox Limited wordmark';
-
-  // Add fallback handling
-  const [logoError, setLogoError] = useState(false);
-  const fallbackLogoSrc = `${publicUrl}/ripple_fox_limited_solid_horizontal.png`;
-
-  const handleLogoError = () => {
-   setLogoError(true);
-  };
-
-  <img 
-    src={logoError ? fallbackLogoSrc : logoSrc}
-    alt={logoAlt}
-    onError={handleLogoError}
-  />
 
   return (
     <Box sx={{ display: 'flex' }}>
