@@ -6,7 +6,6 @@ import { CircularProgress, Box } from '@mui/material';
 const PublicRoute = ({ children, restricted = false }) => {
   const { isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
 
   // Show loading state while checking authentication
   if (isLoading) {
@@ -18,8 +17,8 @@ const PublicRoute = ({ children, restricted = false }) => {
   }
 
   // If route is restricted and user is authenticated, redirect to the previous location or home
-  if (isAuthenticated && restricted) {
-    return <Navigate to={from} replace />;
+    if (isAuthenticated && restricted) {
+    return <Navigate to="/dashboard" replace />;
   }
 
   return children;
