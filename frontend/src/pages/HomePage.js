@@ -126,12 +126,17 @@ const HomePage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isDark = theme.palette.mode === 'dark';
+  
+  // Color mode values
   const previewSoftSurface = isDark ? alpha(theme.palette.primary.light, 0.18) : '#f6f9ff';
   const serviceSectionBackground = isDark ? '#05070e' : alpha(theme.palette.primary.dark, 0.85);
   const statsSectionBackground = isDark ? '#05070e' : '#0f172a';
   const contactSectionBackground = isDark ? alpha(theme.palette.primary.dark, 0.7) : '#f5f8ff';
   const contactCardBackground = isDark ? alpha(theme.palette.primary.dark, 0.5) : '#fff';
   const featureBorderColor = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(13, 14, 21, 0.08)';
+  
+  // TEXT COLOR VALUES FOR DARK MODE
+  const headingColor = isDark ? '#ffffff' : theme.palette.text.primary;
   
   return (
     <Box>
@@ -234,7 +239,7 @@ const HomePage = () => {
               <Typography variant="h5" gutterBottom sx={{ color: theme.palette.primary.main, fontWeight: 600 }}>
                 About Us
               </Typography>
-              <Typography variant="h3" component="h2" sx={{ fontWeight: 700, mb: 3 }}>
+              <Typography variant="h3" component="h2" sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
                 Infrastructure engineering services.
               </Typography>
               <Typography sx={{ color: 'text.secondary' }}>
@@ -271,7 +276,7 @@ const HomePage = () => {
       {/* Core Values Section */}
       <Box component="section" sx={{ py: 10, backgroundColor: previewSoftSurface }}>
         <Container maxWidth="md">
-          <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 6 }}>
+          <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 6, color: headingColor }}>
             Our Core Values
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 2, mb: 4 }}>
@@ -328,7 +333,7 @@ const HomePage = () => {
             component="h2" 
             align="center" 
             gutterBottom
-            sx={{ fontWeight: 700, mb: 6 }}
+            sx={{ fontWeight: 700, mb: 6, color: headingColor }} 
           >
             Why Choose Ripple Fox?
           </Typography>
@@ -354,7 +359,12 @@ const HomePage = () => {
                   }}
                 >
                   <Box sx={{ mb: 3 }}>{feature.icon}</Box>
-                  <Typography variant="h5" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
+                  <Typography 
+                    variant="h5" 
+                    component="h3" 
+                    gutterBottom 
+                    sx={{ fontWeight: 600, color: headingColor }}
+                  >
                     {feature.title}
                   </Typography>
                   <Typography color="text.secondary">
@@ -376,7 +386,7 @@ const HomePage = () => {
                 variant="h3" 
                 component="h2" 
                 gutterBottom
-                sx={{ fontWeight: 700, mb: 3 }}
+                sx={{ fontWeight: 700, mb: 3, color: headingColor }} 
               >
                 Everything You Need to Succeed
               </Typography>
@@ -451,11 +461,11 @@ const HomePage = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ fontWeight: 700, mb: 6 }}>
+          <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ fontWeight: 700, mb: 3 }}>
             What we do
           </Typography>
           <Typography variant="body1" align="center" sx={{ mb: 6, maxWidth: 640, mx: 'auto', opacity: 0.8 }}>
-            Ripple Fox builds tailored solutions by deeply understanding each client’s needs and translating them into reliable infrastructure outcomes.
+            Ripple Fox builds tailored solutions by deeply understanding each client's needs and translating them into reliable infrastructure outcomes.
           </Typography>
           <Grid container spacing={4} justifyContent="center">
             {services.map((service) => (
@@ -574,7 +584,7 @@ const HomePage = () => {
         }}
       >
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, pt: { xs: 10, md: 12 }, pb: { xs: 12, md: 16 } }}>
-          <Typography variant="h4" align="center" sx={{ fontWeight: 700, mb: 2 }}>
+          <Typography variant="h4" align="center" sx={{ fontWeight: 700, mb: 2, color: headingColor }}>
             Want to work with us?
           </Typography>
           <Typography align="center" sx={{ mb: 6, color: 'text.secondary' }}>
@@ -594,14 +604,14 @@ const HomePage = () => {
                     <strong>Email:</strong> info@ripplefox.co
                   </Typography>
                   <Typography variant="body2">
-                    <strong>Phone:</strong> +1 (555) 123-4567
+                    <strong>Phone:</strong> +234 904 431 9888
                   </Typography>
                 </Stack>
               </Card>
             </Grid>
             <Grid item xs={12} md={5}>
               <Paper sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3, backgroundColor: contactCardBackground, border: `1px solid ${featureBorderColor}` }}>
-                <Typography variant="h6" sx={{ mb: 3, fontWeight: 700 }}>
+                <Typography variant="h6" sx={{ mb: 3, fontWeight: 700, color: headingColor }}>
                   CONTACT US
                 </Typography>
                 <Stack spacing={2}>

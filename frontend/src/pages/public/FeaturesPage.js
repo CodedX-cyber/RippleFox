@@ -80,6 +80,10 @@ const FeaturesPage = () => {
     ? `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.95)} 0%, ${alpha(theme.palette.primary.dark, 0.8)} 100%)`
     : `linear-gradient(135deg, rgba(29, 156, 255, 0.95), rgba(16, 167, 255, 0.85))`;
   const cardBackground = isDark ? alpha(theme.palette.primary.main, 0.12) : '#ffffff';
+  
+  // TEXT COLOR VALUES FOR DARK MODE
+  const headingColor = isDark ? '#ffffff' : theme.palette.text.primary;
+  const cardTitleColor = isDark ? '#ffffff' : theme.palette.text.primary;
 
   return (
     <Box
@@ -208,7 +212,7 @@ const FeaturesPage = () => {
                       {feature.badge}
                     </Typography>
                   </Box>
-                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
+                  <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, color: cardTitleColor }}>
                     {feature.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
@@ -233,7 +237,7 @@ const FeaturesPage = () => {
         >
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
-              <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, color: headingColor }}>
                 Built for teams that move fast and care deeply.
               </Typography>
               <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
@@ -254,7 +258,7 @@ const FeaturesPage = () => {
                 {statHighlights.map((stat) => (
                   <Grid item xs={12} sm={4} key={stat.label}>
                     <Box sx={{ textAlign: 'center', py: 1 }}>
-                      <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
+                      <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, color: headingColor }}>
                         {stat.label}
                       </Typography>
                       <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.5 }}>

@@ -46,6 +46,7 @@ const AboutPage = () => {
   const statsSectionBg = isDark ? alpha(theme.palette.primary.main, 0.12) : '#f8fafc';
   const statsCardBg = isDark ? theme.palette.background.paper : '#ffffff';
   const textSecondary = theme.palette.text.secondary;
+  const headingColor = isDark ? '#ffffff' : theme.palette.text.primary;
 
   return (
     <Box>
@@ -88,21 +89,12 @@ const AboutPage = () => {
           }}
         >
           <Box sx={{ mb: 4 }}>
-            <Box
-              component="img"
-              src="https://images.unsplash.com/photo-1553729784-e91953dec042?auto=format&fit=crop&w=400&q=80"
-              alt="Ripple Fox Logo"
-              sx={{
-                height: 80,
-                width: 'auto',
-                filter: 'brightness(0) invert(1)',
-              }}
-            />
+
           </Box>
-          <Typography variant="h2" component="h1" gutterBottom>
+          <Typography variant="h2" component="h1" gutterBottom sx={{ color: theme.palette.primary.main, fontWeight: 600 }}>
             About Ripple Fox
           </Typography>
-          <Typography variant="h5" component="p" maxWidth="800px" mx="auto">
+          <Typography sx={{ color: 'text.secondary' }}>
             Pioneering excellence and innovation across multiple industries since 2008
           </Typography>
         </Container>
@@ -146,15 +138,15 @@ const AboutPage = () => {
         <Container maxWidth="lg">
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={6}>
-              <Typography variant="h3" component="h2" gutterBottom>
+              <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
                 Our Story
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography sx={{ color: 'text.secondary' }}>
                 Founded in 2025, Ripple Fox began as a small startup with a vision to revolutionize the energy sector. 
                 Through innovation and strategic expansion, we've grown into a diversified global enterprise with operations 
                 spanning multiple industries including technology, energy, IT consulting, project management and financial services.
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography sx={{ color: 'text.secondary' }}>
                 Our commitment to excellence, sustainability, and customer satisfaction has been the driving force behind our success. 
                 We continue to push boundaries and set new standards in every industry we operate in.
               </Typography>
@@ -176,7 +168,7 @@ const AboutPage = () => {
       {/* Our Team */}
       <Box py={8}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" align="center" gutterBottom>
+          <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
             Our Leadership Team
           </Typography>
           <Typography variant="subtitle1" align="center" color="text.secondary" mb={6} maxWidth="800px" mx="auto">
@@ -221,41 +213,41 @@ const AboutPage = () => {
         <Container maxWidth="lg">
           <Grid container spacing={6}>
             <Grid item xs={12} md={6}>
-              <Typography variant="h3" component="h2" gutterBottom>
+              <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
                 Our Mission
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography sx={{ color: 'text.secondary' }}>
                 To empower businesses and communities through innovative solutions that drive sustainable growth and create lasting value.
               </Typography>
-              <Typography variant="h3" component="h2" gutterBottom mt={4}>
+              <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
                 Our Vision
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography sx={{ color: 'text.secondary' }}>
                 To be the global leader in diversified business solutions, setting the standard for excellence, innovation, and social responsibility.
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="h3" component="h2" gutterBottom>
+              <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
                 Our Values
               </Typography>
               <Box>
-                <Typography variant="h6" gutterBottom>Integrity</Typography>
-                <Typography variant="body1" paragraph>
+                <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, mb: 1, color: headingColor }}>Integrity</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>
                   We conduct our business with the highest ethical standards and transparency.
                 </Typography>
-                
-                <Typography variant="h6" gutterBottom>Innovation</Typography>
-                <Typography variant="body1" paragraph>
+
+                <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, mb: 1, color: headingColor }}>Innovation</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>
                   We embrace creativity and forward-thinking to solve complex challenges.
                 </Typography>
-                
-                <Typography variant="h6" gutterBottom>Excellence</Typography>
-                <Typography variant="body1" paragraph>
+
+                <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, mb: 1, color: headingColor }}>Excellence</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>
                   We are committed to delivering superior quality in everything we do.
                 </Typography>
-                
-                <Typography variant="h6" gutterBottom>Sustainability</Typography>
-                <Typography variant="body1" paragraph>
+
+                <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, mb: 1, color: headingColor }}>Sustainability</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>
                   We prioritize environmental responsibility and sustainable business practices.
                 </Typography>
               </Box>

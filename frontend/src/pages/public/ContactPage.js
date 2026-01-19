@@ -15,6 +15,7 @@ const ContactPage = () => {
   const mapWrapperBg = isDark ? alpha(theme.palette.primary.dark, 0.4) : alpha(theme.palette.primary.light, 0.35);
   const inputBackground = isDark ? alpha(theme.palette.common.white, 0.08) : alpha(theme.palette.primary.light, 0.12);
   const infoBoxHover = alpha(theme.palette.primary.main, 0.15);
+  const headingColor = isDark ? '#ffffff' : theme.palette.text.primary;
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
@@ -29,14 +30,14 @@ const ContactPage = () => {
             <Typography variant="h2" component="h1" gutterBottom>
               Contact Us
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography sx={{ color: 'text.secondary' }}>
               Have questions or want to learn more about our services? Get in touch with our team today.
             </Typography>
             
             <Box sx={{ mt: 4, mb: 4 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <Email color="primary" sx={{ mr: 2 }} />
-                <Typography>info@ripplefox.co</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>info@ripplefox.co</Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <Phone color="primary" sx={{ mr: 2 }} />
@@ -44,7 +45,7 @@ const ContactPage = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <LocationOn color="primary" sx={{ mr: 2 }} />
-                <Typography>123 Business Avenue, Tech City, 10001</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>123 Business Avenue, Tech City, 10001</Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <AccessTime color="primary" sx={{ mr: 2 }} />
@@ -134,7 +135,7 @@ const ContactPage = () => {
         </Grid>
 
         <Box sx={{ mt: 8 }}>
-          <Typography variant="h4" component="h2" gutterBottom align="center">
+          <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }} align="center">
             Our Location
           </Typography>
           <Box sx={{ height: 400, width: '100%', borderRadius: 2, overflow: 'hidden', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', backgroundColor: mapWrapperBg }}>
@@ -152,32 +153,32 @@ const ContactPage = () => {
         </Box>
 
         <Box sx={{ mt: 8 }}>
-          <Typography variant="h4" component="h2" gutterBottom align="center">
+          <Typography variant="h4" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }} align="center">
             Frequently Asked Questions
           </Typography>
           <Box sx={{ maxWidth: 800, mx: 'auto' }}>
             <Accordion sx={{ backgroundColor: accordionBackground, borderRadius: 2, mb: 2 }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>How can I contact you?</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>How can I contact you?</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>You can contact us via email at info@ripplefox.co or by phone at +234 904 431 9888.</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>You can contact us via email at info@ripplefox.co or by phone at +234 904 431 9888.</Typography>
               </AccordionDetails>
             </Accordion>
             <Accordion sx={{ backgroundColor: accordionBackground, borderRadius: 2, mb: 2 }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>What are your business hours?</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>What are your business hours?</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>Our business hours are Monday to Friday, 9 AM to 6 PM.</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>Our business hours are Monday to Friday, 9 AM to 6 PM.</Typography>
               </AccordionDetails>
             </Accordion>
             <Accordion sx={{ backgroundColor: accordionBackground, borderRadius: 2, mb: 2 }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>What services do you offer?</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>What services do you offer?</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>We offer a wide range of services including technology, energy, IT consulting, project management, and financial services.</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>We offer a wide range of services including technology, energy, IT consulting, project management, and financial services.</Typography>
               </AccordionDetails>
             </Accordion>
           </Box>
