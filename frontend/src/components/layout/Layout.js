@@ -195,6 +195,20 @@ const Layout = ({ children }) => {
 
   const logoAlt = 'Ripple Fox Limited wordmark';
 
+  // Add fallback handling
+  const [logoError, setLogoError] = useState(false);
+  const fallbackLogoSrc = `${publicUrl}/ripple_fox_limited_solid_horizontal.png`;
+
+  const handleLogoError = () => {
+   setLogoError(true);
+  };
+
+  <img 
+    src={logoError ? fallbackLogoSrc : logoSrc}
+    alt={logoAlt}
+    onError={handleLogoError}
+  />
+
   return (
     <Box sx={{ display: 'flex' }}>
       {/* Top AppBar */}

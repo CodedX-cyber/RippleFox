@@ -21,7 +21,7 @@ const PublicRoute = ({ children, restricted = false }) => {
       <Navigate 
         to="/dashboard" 
         replace 
-        state={{ from: location }}  // ← NOW USES location, preserves "intended destination"
+        state={{ from: location }}  
       />
     );
   }
