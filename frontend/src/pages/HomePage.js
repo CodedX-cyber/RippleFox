@@ -132,7 +132,6 @@ const HomePage = () => {
   const serviceSectionBackground = isDark ? '#05070e' : alpha(theme.palette.primary.dark, 0.85);
   const statsSectionBackground = isDark ? '#05070e' : '#0f172a';
   const contactSectionBackground = isDark ? alpha(theme.palette.primary.dark, 0.7) : '#f5f8ff';
-  const contactCardBackground = isDark ? alpha(theme.palette.primary.dark, 0.5) : '#fff';
   const featureBorderColor = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(13, 14, 21, 0.08)';
   
   // TEXT COLOR VALUES FOR DARK MODE
