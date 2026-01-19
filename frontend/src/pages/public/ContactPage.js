@@ -41,7 +41,7 @@ const ContactPage = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <Phone color="primary" sx={{ mr: 2 }} />
-                <Typography>+234 904 431 9888</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>+234 904 431 9888</Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <LocationOn color="primary" sx={{ mr: 2 }} />
@@ -49,7 +49,7 @@ const ContactPage = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <AccessTime color="primary" sx={{ mr: 2 }} />
-                <Typography>Business Hours: Mon-Fri 9AM-6PM</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>Business Hours: Mon-Fri 9AM-6PM</Typography>
               </Box>
             </Box>
           </Grid>

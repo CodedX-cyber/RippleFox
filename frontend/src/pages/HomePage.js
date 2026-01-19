@@ -163,7 +163,7 @@ const HomePage = () => {
               <Typography 
                 variant={isMobile ? 'h6' : 'h5'} 
                 component="p" 
-                sx={{ mb: 4, opacity: 0.9 }}
+                sx={{ color: 'text.secondary' }}
               >
                 SaaS products, project leadership, and technical guidance crafted to accelerate your digital initiatives.
               </Typography>
@@ -299,7 +299,7 @@ const HomePage = () => {
                   clipPath: 'polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)'
                 }}
               >
-                <Typography sx={{ px: 1 }}>{value}</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>{value}</Typography>
               </Box>
             ))}
             <Box
@@ -319,7 +319,7 @@ const HomePage = () => {
                 mt: { xs: 4, md: 0 }
               }}
             >
-              <Typography sx={{ px: 1 }}>RIPPLE FOX</Typography>
+              <Typography sx={{ color: 'text.secondary' }}>RIPPLE FOX</Typography>
             </Box>
           </Box>
         </Container>
@@ -398,7 +398,7 @@ const HomePage = () => {
                   <Grid item xs={12} sm={6} key={index}>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                       <CheckIcon color="primary" sx={{ mr: 1.5 }} />
-                      <Typography>{benefit}</Typography>
+                      <Typography sx={{ color: 'text.secondary' }}>{benefit}</Typography>
                     </Box>
                   </Grid>
                 ))}
@@ -461,10 +461,10 @@ const HomePage = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ fontWeight: 700, mb: 3 }}>
+          <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
             What we do
           </Typography>
-          <Typography variant="body1" align="center" sx={{ mb: 6, maxWidth: 640, mx: 'auto', opacity: 0.8 }}>
+          <Typography variant="body1" align="center" sx={{ color: 'text.secondary' }}>
             Ripple Fox builds tailored solutions by deeply understanding each client's needs and translating them into reliable infrastructure outcomes.
           </Typography>
           <Grid container spacing={4} justifyContent="center">
@@ -485,7 +485,7 @@ const HomePage = () => {
                   <Stack spacing={2}>
                     <Stack direction="row" spacing={1} alignItems="center">
                       {service.icon}
-                      <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, color: headingColor }}>
                         {service.title}
                       </Typography>
                     </Stack>
@@ -511,7 +511,7 @@ const HomePage = () => {
       {/* Stats & Trust Section */}
       <Box component="section" sx={{ backgroundColor: statsSectionBackground, color: '#fff', py: { xs: 10, md: 14 } }}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 4 }}>
+          <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 4, color: headingColor }}>
             Why Ripple Fox?
           </Typography>
           <Typography align="center" sx={{ mb: 6, maxWidth: 720, mx: 'auto', color: 'rgba(255,255,255,0.8)' }}>
@@ -531,7 +531,7 @@ const HomePage = () => {
                     border: `1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.1)'}`
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: headingColor }}>
                     {highlight.title}
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -593,17 +593,17 @@ const HomePage = () => {
           <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} md={5}>
               <Card sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3, background: theme.palette.primary.dark, color: '#fff' }}>
-                <Typography variant="h6" sx={{ mb: 3, fontWeight: 700 }}>
+                <Typography variant="h6" sx={{ mb: 3, fontWeight: 700, color: headingColor }}>
                   Contact Us 
                 </Typography>
                 <Stack spacing={2}>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}> 
                     <strong>Address:</strong> 123 Business Avenue, Tech City, 10001
                   </Typography>
                   <Typography variant="body2">
                     <strong>Email:</strong> info@ripplefox.co
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                     <strong>Phone:</strong> +234 904 431 9888
                   </Typography>
                 </Stack>

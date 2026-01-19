@@ -240,7 +240,7 @@ const FeaturesPage = () => {
               <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, color: headingColor }}>
                 Built for teams that move fast and care deeply.
               </Typography>
-              <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
+              <Typography sx={{ color: 'text.secondary' }}>
                 Ripple Fox is the cockpit where strategy, product, and operations intersect. Every feature is
                 prefaced by research, fast prototyping, and measurable outcomes.
               </Typography>

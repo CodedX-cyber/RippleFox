@@ -168,7 +168,7 @@ const AboutPage = () => {
       {/* Our Team */}
       <Box py={8}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
+          <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }} align="center">
             Our Leadership Team
           </Typography>
           <Typography variant="subtitle1" align="center" color="text.secondary" mb={6} maxWidth="800px" mx="auto">
