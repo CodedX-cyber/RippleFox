@@ -27,10 +27,10 @@ const ContactPage = () => {
       <Container maxWidth="lg">
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
-            <Typography variant="h2" component="h1" gutterBottom>
+            <Typography variant="h2" component="h1" gutterBottom sx={{ color: headingColor }}>
               Contact Us
             </Typography>
-            <Typography sx={{ color: 'text.secondary' }}>
+            <Typography sx={{ color: 'text.secondary',  mb: 4  }}>
               Have questions or want to learn more about our services? Get in touch with our team today.
             </Typography>
             

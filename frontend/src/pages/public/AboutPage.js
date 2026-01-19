@@ -141,7 +141,7 @@ const AboutPage = () => {
               <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
                 Our Story
               </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>
+              <Typography sx={{ color: 'text.secondary', mb:3 }}>
                 Founded in 2025, Ripple Fox began as a small startup with a vision to revolutionize the energy sector. 
                 Through innovation and strategic expansion, we've grown into a diversified global enterprise with operations 
                 spanning multiple industries including technology, energy, IT consulting, project management and financial services.
@@ -216,7 +216,7 @@ const AboutPage = () => {
               <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
                 Our Mission
               </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>
+              <Typography sx={{ color: 'text.secondary', mb: 4 }}>
                 To empower businesses and communities through innovative solutions that drive sustainable growth and create lasting value.
               </Typography>
               <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
@@ -232,7 +232,7 @@ const AboutPage = () => {
               </Typography>
               <Box>
                 <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, mb: 1, color: headingColor }}>Integrity</Typography>
-                <Typography sx={{ color: 'text.secondary' }}>
+                <Typography sx={{ color: 'text.secondary', mb: 2 }}>
                   We conduct our business with the highest ethical standards and transparency.
                 </Typography>
 
@@ -242,7 +242,7 @@ const AboutPage = () => {
                 </Typography>
 
                 <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, mb: 1, color: headingColor }}>Excellence</Typography>
-                <Typography sx={{ color: 'text.secondary' }}>
+                <Typography sx={{ color: 'text.secondary', mb: 2 }}>
                   We are committed to delivering superior quality in everything we do.
                 </Typography>
 

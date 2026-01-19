@@ -461,10 +461,10 @@ const HomePage = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
+          <Typography variant="h3" component="h2" align="center" gutterBottom sx={{ fontWeight: 700, mb: 3, color: '#ffffff' }}>
             What we do
           </Typography>
-          <Typography variant="body1" align="center" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body1" align="center" sx={{ color: 'rgba(255,255,255,0.8)', mb: 6 }}>
             Ripple Fox builds tailored solutions by deeply understanding each client's needs and translating them into reliable infrastructure outcomes.
           </Typography>
           <Grid container spacing={4} justifyContent="center">
@@ -485,7 +485,7 @@ const HomePage = () => {
                   <Stack spacing={2}>
                     <Stack direction="row" spacing={1} alignItems="center">
                       {service.icon}
-                      <Typography variant="h6" sx={{ fontWeight: 600, color: headingColor }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, color: '#ffffff' }}>
                         {service.title}
                       </Typography>
                     </Stack>
@@ -511,7 +511,7 @@ const HomePage = () => {
       {/* Stats & Trust Section */}
       <Box component="section" sx={{ backgroundColor: statsSectionBackground, color: '#fff', py: { xs: 10, md: 14 } }}>
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 4, color: headingColor }}>
+          <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 4, color: '#ffffff' }}>
             Why Ripple Fox?
           </Typography>
           <Typography align="center" sx={{ mb: 6, maxWidth: 720, mx: 'auto', color: 'rgba(255,255,255,0.8)' }}>
@@ -597,13 +597,13 @@ const HomePage = () => {
                   Contact Us 
                 </Typography>
                 <Stack spacing={2}>
-                  <Typography variant="body2" sx={{ color: 'text.secondary' }}> 
+                  <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)' }}> 
                     <strong>Address:</strong> 123 Business Avenue, Tech City, 10001
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)' }}>
                     <strong>Email:</strong> info@ripplefox.co
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                  <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8) ' }}>
                     <strong>Phone:</strong> +234 904 431 9888
                   </Typography>
                 </Stack>
@@ -650,7 +650,7 @@ const HomePage = () => {
         }}
       >
         <Container maxWidth="md">
-          <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3 }}>
+          <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, mb: 3, color: '#ffffff' }}>
             Ready to Get Started?
           </Typography>
           <Typography variant="h6" sx={{ mb: 6, opacity: 0.9, maxWidth: 700, mx: 'auto' }}>
