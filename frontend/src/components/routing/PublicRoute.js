@@ -16,9 +16,14 @@ const PublicRoute = ({ children, restricted = false }) => {
     );
   }
 
-  // If route is restricted and user is authenticated, redirect to the previous location or home
-    if (isAuthenticated && restricted) {
-    return <Navigate to="/dashboard" replace />;
+   if (isAuthenticated && restricted) {
+    return (
+      <Navigate 
+        to="/dashboard" 
+        replace 
+        state={{ from: location }}  // ← NOW USES location, preserves "intended destination"
+      />
+    );
   }
 
   return children;
