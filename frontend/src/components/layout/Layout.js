@@ -193,6 +193,8 @@ const Layout = ({ children }) => {
 
   const logoAlt = 'Ripple Fox Limited wordmark';
 
+  // Main layout structure
+
   return (
     <Box sx={{ display: 'flex' }}>
       {/* Top AppBar */}
