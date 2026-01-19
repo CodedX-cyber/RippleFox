@@ -188,8 +188,6 @@ const Layout = ({ children }) => {
   // Use solid logo for both modes until white version is available
   const logoSrc = `${publicUrl}/ripple_fox_limited_solid_horizontal.png`;
 
-  console.log('Current theme mode:', theme.palette.mode);
-  console.log('Logo src:', logoSrc);
 
   const logoAlt = 'Ripple Fox Limited wordmark';
 
@@ -231,7 +229,7 @@ const Layout = ({ children }) => {
                   component="img"
                   src={logoSrc}
                   alt={logoAlt}
-                  sx={{ height: 44, width: 'auto', filter: theme.palette.mode === 'dark' ? 'invert(0.95)' : 'none' }}
+                  sx={{ height: 44, width: 'auto' }}
                 />
               </Box>
 
