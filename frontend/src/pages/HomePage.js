@@ -125,7 +125,14 @@ const partnerLogos = [
 const HomePage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
+  const isDark = theme.palette.mode === 'dark';
+  const previewSoftSurface = isDark ? alpha(theme.palette.primary.light, 0.18) : '#f6f9ff';
+  const serviceSectionBackground = isDark ? '#05070e' : alpha(theme.palette.primary.dark, 0.85);
+  const statsSectionBackground = isDark ? '#05070e' : '#0f172a';
+  const contactSectionBackground = isDark ? alpha(theme.palette.primary.dark, 0.7) : '#f5f8ff';
+  const contactCardBackground = isDark ? alpha(theme.palette.primary.dark, 0.5) : '#fff';
+  const featureBorderColor = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(13, 14, 21, 0.08)';
+  
   return (
     <Box>
       {/* Hero Section */}
@@ -262,7 +269,7 @@ const HomePage = () => {
       </Box>
 
       {/* Core Values Section */}
-      <Box component="section" sx={{ py: 10, backgroundColor: '#f6f9ff' }}>
+      <Box component="section" sx={{ py: 10, backgroundColor: previewSoftSurface }}>
         <Container maxWidth="md">
           <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 6 }}>
             Our Core Values
@@ -279,9 +286,9 @@ const HomePage = () => {
                   justifyContent: 'center',
                   textAlign: 'center',
                   fontWeight: 600,
-                  color: '#0d1d3a',
-                  backgroundColor: '#fff',
-                  border: '1px solid #dfe7f5',
+                  color: theme.palette.text.primary,
+                  backgroundColor: isDark ? theme.palette.background.paper : '#fff',
+                  border: `1px solid ${featureBorderColor}`,
                   borderRadius: 3,
                   boxShadow: theme.shadows[2],
                   clipPath: 'polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%)'
@@ -342,7 +349,7 @@ const HomePage = () => {
                     '&:hover': {
                       transform: 'translateY(-8px)',
                       boxShadow: theme.shadows[8],
-                      backgroundColor: 'background.paper'
+                      backgroundColor: theme.palette.background.paper
                     }
                   }}
                 >
@@ -439,7 +446,7 @@ const HomePage = () => {
         component="section"
         sx={{
           py: { xs: 10, md: 14 },
-          backgroundColor: '#070b1a',
+          backgroundColor: serviceSectionBackground,
           color: '#fff'
         }}
       >
@@ -456,7 +463,7 @@ const HomePage = () => {
                 <Card
                   sx={{
                     minHeight: 360,
-                    backgroundColor: '#0b1230',
+                    backgroundColor: isDark ? 'rgba(255,255,255,0.05)' : '#0b1230',
                     color: '#fff',
                     border: '1px solid rgba(255,255,255,0.08)',
                     borderRadius: 3,
@@ -492,7 +499,7 @@ const HomePage = () => {
       </Box>
 
       {/* Stats & Trust Section */}
-      <Box component="section" sx={{ backgroundColor: '#05070e', color: '#fff', py: { xs: 10, md: 14 } }}>
+      <Box component="section" sx={{ backgroundColor: statsSectionBackground, color: '#fff', py: { xs: 10, md: 14 } }}>
         <Container maxWidth="lg">
           <Typography variant="h3" component="h2" align="center" sx={{ fontWeight: 700, mb: 4 }}>
             Why Ripple Fox?
@@ -509,7 +516,9 @@ const HomePage = () => {
                     borderRadius: 2,
                     px: 3,
                     py: 4,
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    backgroundColor: theme.palette.background.paper,
+                    border: `1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.1)'}`
                   }}
                 >
                   <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
@@ -527,11 +536,11 @@ const HomePage = () => {
               <Grid item xs={12} md={4} key={metric.label}>
                 <Box
                   sx={{
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    border: `1px solid ${isDark ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.15)'}`,
                     borderRadius: 2,
                     p: 3,
                     textAlign: 'center',
-                    backgroundColor: 'rgba(255,255,255,0.04)'
+                    backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : alpha(theme.palette.primary.light, 0.2)
                   }}
                 >
                   <Typography variant="h4" sx={{ fontWeight: 700 }}>
@@ -560,7 +569,7 @@ const HomePage = () => {
         component="section"
         sx={{
           position: 'relative',
-          backgroundColor: '#f5f8ff',
+          backgroundColor: contactSectionBackground,
           pb: 0
         }}
       >
@@ -591,7 +600,7 @@ const HomePage = () => {
               </Card>
             </Grid>
             <Grid item xs={12} md={5}>
-              <Paper sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3 }}>
+              <Paper sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3, backgroundColor: contactCardBackground, border: `1px solid ${featureBorderColor}` }}>
                 <Typography variant="h6" sx={{ mb: 3, fontWeight: 700 }}>
                   CONTACT US
                 </Typography>

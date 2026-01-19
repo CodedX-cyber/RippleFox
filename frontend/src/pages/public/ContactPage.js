@@ -1,21 +1,20 @@
 import React from 'react';
 import { Container, Typography, TextField, Button, Grid, Box, Paper, Accordion, AccordionSummary, AccordionDetails, useTheme } from '@mui/material';
 import { Email, Phone, LocationOn, AccessTime, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
+import { alpha } from '@mui/material/styles';
 
 const ContactPage = () => {
   const theme = useTheme();
-  const heroBackground =
-    theme.palette.mode === 'dark'
-      ? 'linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,12,22,1) 100%)'
-      : 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
-  const cardBackground =
-    theme.palette.mode === 'dark'
-      ? 'rgba(15,23,42,0.8)'
-      : 'rgba(255, 255, 255, 0.25)';
-  const cardBorder = theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.5)';
-  const accordionBackground =
-    theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.8)';
-  const mapWrapperBg = theme.palette.mode === 'dark' ? 'rgba(2,6,23,0.6)' : 'transparent';
+  const isDark = theme.palette.mode === 'dark';
+  const heroBackground = isDark
+    ? `linear-gradient(135deg, ${alpha(theme.palette.primary.dark, 0.95)} 0%, ${alpha(theme.palette.primary.main, 0.65)} 60%, ${theme.palette.background.default} 100%)`
+    : `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.25)} 0%, ${alpha(theme.palette.primary.light, 0.45)} 60%, ${theme.palette.background.paper} 100%)`;
+  const cardBackground = isDark ? alpha(theme.palette.primary.dark, 0.6) : '#fff';
+  const cardBorder = isDark ? `1px solid ${alpha(theme.palette.common.white, 0.1)}` : `1px solid ${alpha(theme.palette.primary.main, 0.2)}`;
+  const accordionBackground = isDark ? alpha(theme.palette.primary.dark, 0.2) : alpha(theme.palette.primary.light, 0.5);
+  const mapWrapperBg = isDark ? alpha(theme.palette.primary.dark, 0.4) : alpha(theme.palette.primary.light, 0.35);
+  const inputBackground = isDark ? alpha(theme.palette.common.white, 0.08) : alpha(theme.palette.primary.light, 0.12);
+  const infoBoxHover = alpha(theme.palette.primary.main, 0.15);
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
@@ -35,19 +34,19 @@ const ContactPage = () => {
             </Typography>
             
             <Box sx={{ mt: 4, mb: 4 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: 'rgba(25, 118, 210, 0.04)', transform: 'translateX(5px)' } }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <Email color="primary" sx={{ mr: 2 }} />
                 <Typography>info@ripplefox.co</Typography>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: 'rgba(25, 118, 210, 0.04)', transform: 'translateX(5px)' } }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <Phone color="primary" sx={{ mr: 2 }} />
                 <Typography>+234 904 431 9888</Typography>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: 'rgba(25, 118, 210, 0.04)', transform: 'translateX(5px)' } }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <LocationOn color="primary" sx={{ mr: 2 }} />
                 <Typography>123 Business Avenue, Tech City, 10001</Typography>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: 'rgba(25, 118, 210, 0.04)', transform: 'translateX(5px)' } }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <AccessTime color="primary" sx={{ mr: 2 }} />
                 <Typography>Business Hours: Mon-Fri 9AM-6PM</Typography>
               </Box>
@@ -60,7 +59,7 @@ const ContactPage = () => {
             sx={{
               p: 4,
               borderRadius: 3,
-              boxShadow: theme.palette.mode === 'dark' ? '0 10px 40px rgba(0,0,0,0.8)' : '0 8px 32px rgba(0,0,0,0.1)',
+              boxShadow: isDark ? '0 10px 40px rgba(0,0,0,0.8)' : '0 8px 32px rgba(0,0,0,0.1)',
               backdropFilter: 'blur(10px)',
               backgroundColor: cardBackground,
               border: cardBorder,
@@ -74,7 +73,7 @@ const ContactPage = () => {
                       fullWidth
                       label="First Name"
                       variant="outlined"
-                      InputProps={{ sx: { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.9)', color: theme.palette.text.primary } }}
+                      InputProps={{ sx: { backgroundColor: inputBackground, color: theme.palette.text.primary } }}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -83,7 +82,7 @@ const ContactPage = () => {
                       fullWidth
                       label="Last Name"
                       variant="outlined"
-                      InputProps={{ sx: { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.9)', color: theme.palette.text.primary } }}
+                      InputProps={{ sx: { backgroundColor: inputBackground, color: theme.palette.text.primary } }}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -93,7 +92,7 @@ const ContactPage = () => {
                       label="Email"
                       type="email"
                       variant="outlined"
-                      InputProps={{ sx: { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.9)', color: theme.palette.text.primary } }}
+                      InputProps={{ sx: { backgroundColor: inputBackground, color: theme.palette.text.primary } }}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -102,7 +101,7 @@ const ContactPage = () => {
                       fullWidth
                       label="Subject"
                       variant="outlined"
-                      InputProps={{ sx: { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.9)', color: theme.palette.text.primary } }}
+                      InputProps={{ sx: { backgroundColor: inputBackground, color: theme.palette.text.primary } }}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -113,7 +112,7 @@ const ContactPage = () => {
                       multiline
                       rows={4}
                       variant="outlined"
-                      InputProps={{ sx: { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.9)', color: theme.palette.text.primary } }}
+                      InputProps={{ sx: { backgroundColor: inputBackground, color: theme.palette.text.primary } }}
                     />
                   </Grid>
                   <Grid item xs={12}>

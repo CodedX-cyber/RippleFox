@@ -1,6 +1,6 @@
 {
-  "short_name": "Volt Conglomerate",
-  "name": "Volt Conglomerate Application",
+  "short_name": "Ripple Fox",
+  "name": "Ripple Fox Limited Application",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,14 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "ripple_fox_limited_solid_horizontal.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "ripple_fox_limited_solid_horizontal.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": ".",

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Typography, Box, Grid, Paper, Avatar } from '@mui/material';
+import { Container, Typography, Box, Grid, Paper, Avatar, useTheme } from '@mui/material';
+import { alpha } from '@mui/material/styles';
 import { Business, People, EmojiEvents, Public } from '@mui/icons-material';
 
 const stats = [
@@ -37,6 +38,15 @@ const team = [
 ];
 
 const AboutPage = () => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+  const heroGradient = isDark
+    ? `linear-gradient(135deg, ${alpha(theme.palette.primary.dark, 0.95)} 0%, ${alpha(theme.palette.primary.main, 0.5)} 60%, rgba(2,6,23,0.85) 100%)`
+    : `linear-gradient(135deg, rgba(5,9,24,0.85) 0%, ${alpha(theme.palette.primary.main, 0.5)} 60%, rgba(2,6,23,0.75) 100%)`;
+  const statsSectionBg = isDark ? alpha(theme.palette.primary.main, 0.12) : '#f8fafc';
+  const statsCardBg = isDark ? theme.palette.background.paper : '#ffffff';
+  const textSecondary = theme.palette.text.secondary;
+
   return (
     <Box>
       {/* Hero Section */}
@@ -50,7 +60,7 @@ const AboutPage = () => {
             content: '""',
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.5) 60%, rgba(15,23,42,0.85) 100%)',
+            background: heroGradient,
             zIndex: 1,
           },
         }}
@@ -99,7 +109,7 @@ const AboutPage = () => {
       </Box>
 
       {/* Stats Section */}
-      <Box py={8}>
+      <Box py={8} sx={{ backgroundColor: statsSectionBg }}>
         <Container maxWidth="lg">
           <Grid container spacing={4} justifyContent="center">
             {stats.map((stat, index) => (
@@ -107,12 +117,24 @@ const AboutPage = () => {
                 <Box mb={1}>
                   {stat.icon}
                 </Box>
-                <Typography variant="h4" component="div" fontWeight="bold">
-                  {stat.number}
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary">
-                  {stat.label}
-                </Typography>
+                <Paper
+                  elevation={0}
+                  sx={{
+                    bgcolor: statsCardBg,
+                    px: 2,
+                    py: 1,
+                    borderRadius: 3,
+                    mb: 1,
+                    border: `1px solid ${alpha(theme.palette.primary.main, 0.2)}`,
+                  }}
+                >
+                  <Typography variant="h4" component="div" fontWeight="bold">
+                    {stat.number}
+                  </Typography>
+                  <Typography variant="subtitle1" color={textSecondary}>
+                    {stat.label}
+                  </Typography>
+                </Paper>
               </Grid>
             ))}
           </Grid>

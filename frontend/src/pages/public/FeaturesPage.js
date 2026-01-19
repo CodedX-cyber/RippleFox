@@ -75,8 +75,11 @@ const statHighlights = [
 const FeaturesPage = () => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
-  const background = isDark ? '#050608' : '#f5f6fb';
-  const cardBackground = isDark ? 'rgba(255,255,255,0.04)' : '#ffffff';
+  const background = theme.palette.background.default;
+  const heroGradient = isDark
+    ? `linear-gradient(135deg, ${alpha(theme.palette.primary.main, 0.95)} 0%, ${alpha(theme.palette.primary.dark, 0.8)} 100%)`
+    : `linear-gradient(135deg, rgba(29, 156, 255, 0.95), rgba(16, 167, 255, 0.85))`;
+  const cardBackground = isDark ? alpha(theme.palette.primary.main, 0.12) : '#ffffff';
 
   return (
     <Box
@@ -120,9 +123,7 @@ const FeaturesPage = () => {
           sx={{
             position: 'relative',
             borderRadius: 4,
-            background: isDark
-              ? alpha('#050608', 0.8)
-              : 'linear-gradient(135deg, rgba(29, 156, 255, 0.95), rgba(16, 167, 255, 0.85))',
+            background: heroGradient,
             p: { xs: 4, md: 6 },
             mb: { xs: 6, md: 10 },
             boxShadow:
@@ -223,8 +224,8 @@ const FeaturesPage = () => {
           component="section"
           sx={{
             background: isDark
-              ? 'linear-gradient(115deg, rgba(255,255,255,0.05), rgba(255,255,255,0))'
-              : 'linear-gradient(120deg, rgba(13,14,21,0.04), rgba(13,14,21,0))',
+              ? `radial-gradient(circle, ${alpha(theme.palette.primary.light, 0.12)} 0%, rgba(255,255,255,0) 70%)`
+              : `linear-gradient(120deg, rgba(74, 108, 247, 0.12), rgba(74, 108, 247, 0))`,
             borderRadius: 3,
             p: { xs: 3, md: 5 },
             backdropFilter: 'blur(10px)',
