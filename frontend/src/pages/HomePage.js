@@ -610,8 +610,8 @@ const HomePage = () => {
               </Card>
             </Grid>
             <Grid item xs={12} md={5}>
-              <Paper sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3, backgroundColor: contactCardBackground, border: `1px solid ${featureBorderColor}` }}>
-                <Typography variant="h6" sx={{ mb: 3, fontWeight: 700, color: headingColor }}>
+              <Paper sx={{ borderRadius: 4, boxShadow: theme.shadows[4], py: 4, px: 3, background: theme.palette.primary.dark, color: '#fff' }}>
+                <Typography variant="h6" sx={{ mb: 3, fontWeight: 700, color: '#ffffff' }}>
                   CONTACT US
                 </Typography>
                 <Stack spacing={2}>
