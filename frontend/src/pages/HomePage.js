@@ -686,4 +686,6 @@ const HomePage = () => {
   );
 };
 
+// Export the HomePage component
+
 export default HomePage;
