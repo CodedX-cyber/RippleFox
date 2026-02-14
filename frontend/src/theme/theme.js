@@ -20,11 +20,11 @@ export const getContrastText = (backgroundColor, mode) => {
 // Main theme creator function
 export const getTheme = (mode) => createTheme({
   palette: {
-    mode,
+    mode: 'dark',  // or 'light' – your code handles both
     primary: {
-      main: '#4a6cf7',
-      light: 'rgba(74, 108, 247, 0.1)',
-      dark: '#3451d9',
+      main: 'rgb(0, 165, 223)',      // bright
+      dark: 'rgb(0, 100, 155)',       // deep
+      light: 'rgb(0, 130, 190)',      // mid
     },
     secondary: {
       main: '#f59e0b',

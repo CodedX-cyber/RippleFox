@@ -34,7 +34,14 @@ import {
   Google as GoogleIcon,
 } from '@mui/icons-material';
 
-// Validation schema
+import { alpha } from '@mui/material/styles';
+
+// Ripple brand colors
+const RIPPLE_BRIGHT = 'rgb(0, 165, 223)';
+const RIPPLE_MID   = 'rgb(0, 130, 190)';
+const RIPPLE_DARK  = 'rgb(0, 100, 155)';
+
+// Validation schema (unchanged)
 const validationSchema = Yup.object({
   email: Yup.string()
     .email('Enter a valid email')
@@ -47,27 +54,23 @@ const validationSchema = Yup.object({
 
 const LoginPage = () => {
   const theme = useTheme();
-  const heroBackground =
-    theme.palette.mode === 'dark'
-      ? 'linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,12,22,1) 100%)'
-      : '#ffffff';
-  const cardBackground =
-    theme.palette.mode === 'dark' ? 'rgba(15,23,42,0.7)' : 'rgba(255, 255, 255, 0.65)';
-  const cardBorder = theme.palette.mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid rgba(255, 255, 255, 0.7)';
-  const gradientOverlay =
-    theme.palette.mode === 'dark'
-      ? 'linear-gradient(120deg, rgba(59,130,246,0.45), rgba(14,165,233,0.3), rgba(59,130,246,0.15))'
-      : 'linear-gradient(120deg, rgba(59,130,246,0.30), rgba(14,165,233,0.20), rgba(59,130,246,0.10))';
-  const accentStripe =
-    theme.palette.mode === 'dark'
-      ? 'linear-gradient(140deg, rgba(14,165,233,0.2), rgba(59,130,246,0.25), rgba(14,165,233,0.1))'
-      : 'linear-gradient(140deg, rgba(59,130,246,0.25), rgba(14,165,233,0.18), rgba(59,130,246,0.08))';
   const navigate = useNavigate();
   const location = useLocation();
   const { login, isAuthenticated, isLoading } = useAuth();
+
   const [showPassword, setShowPassword] = useState(false);
   const [serverError, setServerError] = useState('');
   const [showWelcome, setShowWelcome] = useState(false);
+
+  const isDark = theme.palette.mode === 'dark';
+
+  // Adaptive styles
+  const heroBackground = isDark
+    ? 'linear-gradient(135deg, rgba(15,23,42,0.99) 0%, rgba(7,12,22,1) 100%)'
+    : '#f8fafc';
+
+  const cardBackground = isDark ? 'rgba(15,23,42,0.94)' : 'rgba(255,255,255,0.96)';
+  const cardBorder = isDark ? '1px solid rgba(255,255,255,0.13)' : '1px solid rgba(0,0,0,0.06)';
 
   // Redirect if already logged in
   useEffect(() => {
@@ -75,12 +78,10 @@ const LoginPage = () => {
       const from = location.state?.from?.pathname || '/dashboard';
       navigate(from, { replace: true });
     }
-    // Show welcome animation after component mounts
     const timer = setTimeout(() => setShowWelcome(true), 100);
     return () => clearTimeout(timer);
   }, [isAuthenticated, navigate, location, isLoading]);
 
-  // Formik form handling
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -97,7 +98,6 @@ const LoginPage = () => {
         
         if (!result.success) {
           if (result.errors) {
-            // Handle field-specific errors
             Object.entries(result.errors).forEach(([field, messages]) => {
               setFieldError(field.toLowerCase(), Array.isArray(messages) ? messages[0] : messages);
             });
@@ -114,7 +114,6 @@ const LoginPage = () => {
           });
           return;
         } else if (rememberMe) {
-          // Handle remember me functionality if needed
           localStorage.setItem('rememberMe', 'true');
         }
       } catch (error) {
@@ -135,203 +134,301 @@ const LoginPage = () => {
   };
 
   return (
-    <Container
-      component="main"
-      maxWidth="xs"
+    <Box
       sx={{
-        background: heroBackground,
         minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        width: '100vw',
+        m: 0,
+        p: 0,
+        background: heroBackground,
         position: 'relative',
         overflow: 'hidden',
-        px: 0,
-        '@keyframes gradientShift': {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
-        },
-        '@keyframes stripeFloat': {
-          '0%': { transform: 'rotate(-7deg) translateX(-10%)' },
-          '50%': { transform: 'rotate(-7deg) translateX(0%)' },
-          '100%': { transform: 'rotate(-7deg) translateX(-10%)' },
-        },
       }}
     >
+      {/* Realistic Ripple Water Effect – same as Register page, low-centered at bottom */}
       <Box
         sx={{
           position: 'absolute',
-          inset: 0,
-          background: gradientOverlay,
-          opacity: 0.8,
-          backgroundSize: '200% 200%',
-          animation: 'gradientShift 14s ease infinite',
-          pointerEvents: 'none',
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '8%',
-          left: '-5%',
-          width: '110%',
+          bottom: 0,
+          left: 0,
+          right: 0,
           height: '70%',
-          background: accentStripe,
-          borderRadius: '220px',
-          filter: 'blur(0.4px)',
-          opacity: theme.palette.mode === 'dark' ? 0.4 : 0.6,
-          animation: 'stripeFloat 20s ease-in-out infinite',
           pointerEvents: 'none',
+          zIndex: 0,
+          overflow: 'hidden',
         }}
-      />
-      <Fade in={showWelcome} timeout={500}>
+      >
+        {/* Main glowing ripple core (bright blue spot at bottom center) */}
         <Box
           sx={{
-            position: 'relative',
-            zIndex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            position: 'absolute',
+            bottom: '12%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '220px',
+            height: '220px',
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${alpha(RIPPLE_BRIGHT, 0.65)} 10%, transparent 70%)`,
+            boxShadow: `0 0 120px 60px ${alpha(RIPPLE_BRIGHT, 0.45)}, 0 0 200px 100px ${alpha(RIPPLE_BRIGHT, 0.25)}`,
+            animation: 'corePulse 10s infinite ease-in-out',
+            pointerEvents: 'none',
+            '@keyframes corePulse': {
+              '0%, 100%': { transform: 'translateX(-50%) scale(1)', opacity: 0.8 },
+              '50%': { transform: 'translateX(-50%) scale(1.18)', opacity: 1 },
+            },
           }}
-        >
-          <Typography component="h1" variant="h4" sx={{ mb: 3, fontWeight: 'bold' }}>
-            Sign in to your account
-          </Typography>
-          
-          <Paper
-            elevation={3}
+        />
+
+        {/* Primary ripple ring – large, slow expansion from bottom center */}
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: '12%',
+            left: '50%',
+            transform: 'translate(-50%, 0) scale(0.15)',
+            width: '800px',
+            height: '800px',
+            borderRadius: '50%',
+            border: `3px solid ${alpha(RIPPLE_BRIGHT, 0.4)}`,
+            opacity: 0,
+            animation: 'mainRipple 16s infinite ease-out',
+            pointerEvents: 'none',
+            '@keyframes mainRipple': {
+              '0%': {
+                transform: 'translate(-50%, 0) scale(0.15)',
+                opacity: 0,
+              },
+              '10%': { opacity: 0.7 },
+              '50%': { opacity: 0.25 },
+              '100%': {
+                transform: 'translate(-50%, -70%) scale(3.8)',
+                opacity: 0,
+              },
+            },
+          }}
+        />
+
+        {/* Secondary / tertiary rings – fainter, delayed for depth */}
+        {[1, 2].map((i) => (
+          <Box
+            key={i}
             sx={{
-              p: 4,
-              width: '100%',
-              borderRadius: 2,
-              backgroundColor: cardBackground,
-              border: cardBorder,
-              backdropFilter: 'blur(12px)',
-              boxShadow: theme.palette.mode === 'dark' ? '0 15px 40px rgba(0,0,0,0.6)' : '0 15px 40px rgba(0,0,0,0.15)',
+              position: 'absolute',
+              bottom: '12%',
+              left: '50%',
+              transform: 'translate(-50%, 0) scale(0.15)',
+              width: `${800 + i * 200}px`,
+              height: `${800 + i * 200}px`,
+              borderRadius: '50%',
+              border: `2px solid ${alpha(RIPPLE_BRIGHT, 0.25 - i * 0.1)}`,
+              opacity: 0,
+              animation: `secondaryRipple ${18 + i * 3}s infinite ease-out`,
+              animationDelay: `${i * 3}s`,
+              pointerEvents: 'none',
+              '@keyframes secondaryRipple': {
+                '0%': { transform: 'translate(-50%, 0) scale(0.15)', opacity: 0 },
+                '15%': { opacity: 0.5 },
+                '60%': { opacity: 0.1 },
+                '100%': { transform: 'translate(-50%, -80%) scale(4.5)', opacity: 0 },
+              },
+            }}
+          />
+        ))}
+
+        {/* Upward light beam / caustic glow */}
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '500px',
+            height: '85%',
+            background: `linear-gradient(to top, transparent 20%, ${alpha(RIPPLE_BRIGHT, 0.22)} 50%, transparent 100%)`,
+            opacity: 0.75,
+            animation: 'beamPulse 14s infinite ease-in-out',
+            pointerEvents: 'none',
+            '@keyframes beamPulse': {
+              '0%, 100%': { opacity: 0.65 },
+              '50%': { opacity: 1 },
+            },
+          }}
+        />
+
+        {/* Subtle vignette to darken edges */}
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(circle at 50% 30%, transparent 30%, rgba(0,0,0,0.55) 100%)',
+            pointerEvents: 'none',
+            opacity: isDark ? 0.6 : 0.3,
+          }}
+        />
+      </Box>
+
+      {/* Form Content – completely unchanged */}
+      <Container
+        maxWidth="xs"
+        sx={{
+          background: heroBackground,
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          px: 0,
+        }}
+      >
+        <Fade in={showWelcome} timeout={500}>
+          <Box
+            sx={{
+              position: 'relative',
+              zIndex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            {serverError && (
-              <Alert severity="error" sx={{ mb: 3 }}>
-                {serverError}
-              </Alert>
-            )}
+            <Typography component="h1" variant="h4" sx={{ mb: 3, fontWeight: 'bold' }}>
+              Sign in to your account
+            </Typography>
             
-            <Box component="form" onSubmit={formik.handleSubmit} noValidate>
-              <FormControl fullWidth variant="outlined" margin="normal" required>
-                <InputLabel htmlFor="email">Email Address</InputLabel>
-                <OutlinedInput
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={formik.touched.email && Boolean(formik.errors.email)}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <EmailIcon color="action" />
-                    </InputAdornment>
-                  }
-                  label="Email Address"
-                />
-                {formik.touched.email && formik.errors.email && (
-                  <FormHelperText error>{formik.errors.email}</FormHelperText>
-                )}
-              </FormControl>
+            <Paper
+              elevation={3}
+              sx={{
+                p: 4,
+                width: '100%',
+                borderRadius: 2,
+                backgroundColor: cardBackground,
+                border: cardBorder,
+                backdropFilter: 'blur(12px)',
+                boxShadow: theme.palette.mode === 'dark' ? '0 15px 40px rgba(0,0,0,0.6)' : '0 15px 40px rgba(0,0,0,0.15)',
+              }}
+            >
+              {serverError && (
+                <Alert severity="error" sx={{ mb: 3 }}>
+                  {serverError}
+                </Alert>
+              )}
+              
+              <Box component="form" onSubmit={formik.handleSubmit} noValidate>
+                <FormControl fullWidth variant="outlined" margin="normal" required>
+                  <InputLabel htmlFor="email">Email Address</InputLabel>
+                  <OutlinedInput
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <EmailIcon color="action" />
+                      </InputAdornment>
+                    }
+                    label="Email Address"
+                  />
+                  {formik.touched.email && formik.errors.email && (
+                    <FormHelperText error>{formik.errors.email}</FormHelperText>
+                  )}
+                </FormControl>
 
-              <FormControl fullWidth variant="outlined" margin="normal" required>
-                <InputLabel htmlFor="password">Password</InputLabel>
-                <OutlinedInput
-                  id="password"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={formik.touched.password && Boolean(formik.errors.password)}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <LockIcon color="action" />
-                    </InputAdornment>
-                  }
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Password"
-                />
-                {formik.touched.password && formik.errors.password && (
-                  <FormHelperText error>{formik.errors.password}</FormHelperText>
-                )}
-              </FormControl>
+                <FormControl fullWidth variant="outlined" margin="normal" required>
+                  <InputLabel htmlFor="password">Password</InputLabel>
+                  <OutlinedInput
+                    id="password"
+                    name="password"
+                    type={showPassword ? 'text' : 'password'}
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={formik.touched.password && Boolean(formik.errors.password)}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <LockIcon color="action" />
+                      </InputAdornment>
+                    }
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    label="Password"
+                  />
+                  {formik.touched.password && formik.errors.password && (
+                    <FormHelperText error>{formik.errors.password}</FormHelperText>
+                  )}
+                </FormControl>
 
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="rememberMe"
-                      color="primary"
-                      checked={formik.values.rememberMe}
-                      onChange={formik.handleChange}
-                    />
-                  }
-                  label="Remember me"
-                />
-                <Link component={RouterLink} to="/forgot-password" variant="body2">
-                  Forgot password?
-                </Link>
-              </Box>
-
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                size="large"
-                disabled={formik.isSubmitting}
-                startIcon={formik.isSubmitting ? <CircularProgress size={20} /> : <LoginIcon />}
-                sx={{ mt: 2, mb: 2, py: 1.5, background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)', '&:hover': { background: 'linear-gradient(45deg, #1976D2 30%, #00BCD4 90%)' } }}
-              >
-                {formik.isSubmitting ? 'Signing in...' : 'Sign In'}
-              </Button>
-
-              <Divider sx={{ my: 3 }}>OR</Divider>
-
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <Button
-                    fullWidth
-                    variant="outlined"
-                    startIcon={<GoogleIcon />}
-                    sx={{ mb: 1, '&:hover': { backgroundColor: 'rgba(66, 133, 244, 0.04)' } }}
-                    onClick={() => window.location.href = '/api/v1/auth/google/'}
-                  >
-                    Continue with Google
-                  </Button>
-                </Grid>
-              </Grid>
-
-              <Box sx={{ mt: 3, textAlign: 'center' }}>
-                <Typography variant="body2" color="text.secondary">
-                  Don't have an account?{' '}
-                  <Link component={RouterLink} to="/register" variant="body2">
-                    Sign up
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        name="rememberMe"
+                        color="primary"
+                        checked={formik.values.rememberMe}
+                        onChange={formik.handleChange}
+                      />
+                    }
+                    label="Remember me"
+                  />
+                  <Link component={RouterLink} to="/forgot-password" variant="body2">
+                    Forgot password?
                   </Link>
-                </Typography>
+                </Box>
+
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  size="large"
+                  disabled={formik.isSubmitting}
+                  startIcon={formik.isSubmitting ? <CircularProgress size={20} /> : <LoginIcon />}
+                  sx={{ mt: 2, mb: 2, py: 1.5, background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)', '&:hover': { background: 'linear-gradient(45deg, #1976D2 30%, #00BCD4 90%)' } }}
+                >
+                  {formik.isSubmitting ? 'Signing in...' : 'Sign In'}
+                </Button>
+
+                <Divider sx={{ my: 3 }}>OR</Divider>
+
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      startIcon={<GoogleIcon />}
+                      sx={{ mb: 1, '&:hover': { backgroundColor: 'rgba(66, 133, 244, 0.04)' } }}
+                      onClick={() => window.location.href = '/api/v1/auth/google/'}
+                    >
+                      Continue with Google
+                    </Button>
+                  </Grid>
+                </Grid>
+
+                <Box sx={{ mt: 3, textAlign: 'center' }}>
+                  <Typography variant="body2" color="text.secondary">
+                    Don't have an account?{' '}
+                    <Link component={RouterLink} to="/register" variant="body2">
+                      Sign up
+                    </Link>
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-          </Paper>
-        </Box>
-      </Fade>
-    </Container>
+            </Paper>
+          </Box>
+        </Fade>
+      </Container>
+    </Box>
   );
 };
 

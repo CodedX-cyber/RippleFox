@@ -341,4 +341,50 @@ p, .body-text {
   }
 }
 
+/* Hero section with Ripple-inspired gradient background */
+.hero-section {
+  background:
+    radial-gradient(circle at center,
+      rgb(0, 165, 223) 0%,          /* Bright Ripple center glow */
+      rgb(0, 130, 190) 40%,         /* Mid transition */
+      transparent 70%               /* Fade out to let linear show through */
+    ),
+    linear-gradient(135deg,
+      rgb(0, 100, 155) 0%,          /* Dark outer edges */
+      rgb(0, 130, 190) 45%,         /* Mid transition */
+      rgb(0, 165, 223) 100%         /* Bright Ripple diagonal end */
+    );
+  background-blend-mode: normal;     /* Try 'screen' or 'overlay' if glow feels too subtle */
+  background-size: cover;
+  background-position: center;
+  color: white;                      /* White text for contrast on dark bg */
+  padding: 6rem 0;                   /* Generous vertical padding like typical heroes */
+  min-height: 80vh;                  /* Takes most of viewport height */
+}
+
+/* Make headings and paragraphs white/visible */
+.hero-section h1,
+.hero-section h2,
+.hero-section h3,
+.hero-section .MuiTypography-h3,
+.hero-section .MuiTypography-h6 {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Slight shadow for readability */
+}
+
+.hero-section p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Optional: darken buttons or adjust if needed */
+.hero-section .MuiButton-contained {
+  background-color: rgb(0, 165, 223); /* Use bright Ripple blue for CTA */
+  color: white;
+}
+
+.hero-section .MuiButton-outlined {
+  border-color: rgb(0, 165, 223);
+  color: rgb(0, 165, 223);
+}
+
 /* End of index.css */
