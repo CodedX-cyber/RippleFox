@@ -38,8 +38,6 @@ import { alpha } from '@mui/material/styles';
 
 // Ripple brand colors
 const RIPPLE_BRIGHT = 'rgb(0, 165, 223)';
-const RIPPLE_MID   = 'rgb(0, 130, 190)';
-const RIPPLE_DARK  = 'rgb(0, 100, 155)';
 
 // Validation schema (unchanged)
 const validationSchema = Yup.object({

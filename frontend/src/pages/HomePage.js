@@ -137,11 +137,7 @@ const HomePage = () => {
   `;
 
   const headingColor = isDark ? '#ffffff' : theme.palette.text.primary;
-  const previewSoftSurface = isDark ? alpha(theme.palette.primary.light, 0.18) : '#f6f9ff';
-  const serviceSectionBackground = isDark ? '#05070e' : alpha(theme.palette.primary.dark, 0.85);
-  const statsSectionBackground = isDark ? '#05070e' : '#0f172a';
   const contactSectionBackground = isDark ? alpha(theme.palette.primary.dark, 0.7) : '#f5f8ff';
-  const featureBorderColor = isDark ? 'rgba(255,255,255,0.15)' : 'rgba(13, 14, 21, 0.08)';
 
   return (
     <Box>
