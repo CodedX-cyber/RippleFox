@@ -387,4 +387,56 @@ p, .body-text {
   color: rgb(0, 165, 223);
 }
 
+/* Strong Ripple Animation Keyframes (used in auth pages) */
+
+@keyframes corePulseStrong {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 1;
+  }
+}
+
+@keyframes mainRippleStrong {
+  0% {
+    transform: translate(-50%, -50%) scale(0.08);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, 300%) scale(3.5);
+    opacity: 0;
+  }
+}
+
+@keyframes secondaryRippleStrong {
+  0% {
+    transform: translate(-50%, -50%) scale(0.08);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-50%, 350%) scale(4.2);
+    opacity: 0;
+  }
+}
+
+@keyframes beamPulseStrong {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1.12);
+  }
+}
+
 /* End of index.css */

@@ -38,7 +38,7 @@ import { alpha } from '@mui/material/styles';
 
 // Ripple brand colors
 const RIPPLE_BRIGHT = 'rgb(0, 165, 223)';
-const RIPPLE_MID   = 'rgb(0, 130, 190)';
+const RIPPLE_MID = 'rgb(0, 130, 190)';
 
 // Validation schema (unchanged)
 const validationSchema = Yup.object({
@@ -80,7 +80,9 @@ const RegisterPage = () => {
   const isDark = theme.palette.mode === 'dark';
 
   // Adaptive styles
-  const heroBackground = isDark ? '#07121a' : '#f8fafc';
+  const heroBackground = isDark
+    ? 'linear-gradient(to bottom, #0f172a 0%, #02040a 100%)'
+    : '#f8fafc';
 
   const cardBackground = isDark ? 'rgba(15,23,42,0.94)' : 'rgba(255,255,255,0.96)';
   const cardBorder = isDark ? '1px solid rgba(255,255,255,0.13)' : '1px solid rgba(0,0,0,0.06)';
@@ -143,124 +145,94 @@ const RegisterPage = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Realistic Ripple Water Effect – positioned exactly as in your image */}
+      {/* Stronger top → bottom ripple animation */}
       <Box
         sx={{
           position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '70%', // ripple originates low and expands upward
+          inset: 0,
           pointerEvents: 'none',
           zIndex: 0,
           overflow: 'hidden',
         }}
       >
-        {/* Main glowing ripple core (bright blue spot at bottom center) */}
+        {/* Core glow – stronger */}
         <Box
           sx={{
             position: 'absolute',
-            bottom: '12%',
+            top: '10%',
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '220px',
-            height: '220px',
+            width: '380px',
+            height: '380px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${alpha(RIPPLE_BRIGHT, 0.65)} 10%, transparent 70%)`,
-            boxShadow: `0 0 120px 60px ${alpha(RIPPLE_BRIGHT, 0.45)}, 0 0 200px 100px ${alpha(RIPPLE_BRIGHT, 0.25)}`,
-            animation: 'corePulse 10s infinite ease-in-out',
-            pointerEvents: 'none',
-            '@keyframes corePulse': {
-              '0%, 100%': { transform: 'translateX(-50%) scale(1)', opacity: 0.8 },
-              '50%': { transform: 'translateX(-50%) scale(1.18)', opacity: 1 },
-            },
+            background: `radial-gradient(circle, ${alpha(RIPPLE_BRIGHT, 0.9)} 12%, transparent 70%)`,
+            boxShadow: `
+              0 0 160px 90px ${alpha(RIPPLE_BRIGHT, 0.75)},
+              0 0 280px 160px ${alpha(RIPPLE_BRIGHT, 0.55)},
+              0 0 480px 240px ${alpha(RIPPLE_BRIGHT, 0.35)}
+            `,
+            animation: 'corePulseStrong 6.5s infinite ease-in-out',
           }}
         />
 
-        {/* Primary ripple ring – large, slow expansion from bottom center */}
+        {/* Main ripple ring – stronger & faster */}
         <Box
           sx={{
             position: 'absolute',
-            bottom: '12%',
+            top: '10%',
             left: '50%',
-            transform: 'translate(-50%, 0) scale(0.15)',
-            width: '800px',
-            height: '800px',
+            transform: 'translate(-50%, -50%) scale(0.08)',
+            width: '1100px',
+            height: '1100px',
             borderRadius: '50%',
-            border: `3px solid ${alpha(RIPPLE_BRIGHT, 0.4)}`,
+            border: `5px solid ${alpha(RIPPLE_BRIGHT, 0.75)}`,
             opacity: 0,
-            animation: 'mainRipple 16s infinite ease-out',
-            pointerEvents: 'none',
-            '@keyframes mainRipple': {
-              '0%': {
-                transform: 'translate(-50%, 0) scale(0.15)',
-                opacity: 0,
-              },
-              '10%': { opacity: 0.7 },
-              '50%': { opacity: 0.25 },
-              '100%': {
-                transform: 'translate(-50%, -70%) scale(3.8)',
-                opacity: 0,
-              },
-            },
+            animation: 'mainRippleStrong 9s infinite ease-out',
           }}
         />
 
-        {/* Secondary / tertiary rings – fainter, delayed for depth */}
-        {[1, 2].map((i) => (
+        {/* Additional rings – more visible */}
+        {[1, 2, 3].map((delay) => (
           <Box
-            key={i}
+            key={delay}
             sx={{
               position: 'absolute',
-              bottom: '12%',
+              top: '10%',
               left: '50%',
-              transform: 'translate(-50%, 0) scale(0.15)',
-              width: `${800 + i * 200}px`,
-              height: `${800 + i * 200}px`,
+              transform: 'translate(-50%, -50%) scale(0.08)',
+              width: `${1100 + delay * 320}px`,
+              height: `${1100 + delay * 320}px`,
               borderRadius: '50%',
-              border: `2px solid ${alpha(RIPPLE_BRIGHT, 0.25 - i * 0.1)}`,
+              border: `4px solid ${alpha(RIPPLE_BRIGHT, 0.6 - delay * 0.18)}`,
               opacity: 0,
-              animation: `secondaryRipple ${18 + i * 3}s infinite ease-out`,
-              animationDelay: `${i * 3}s`,
-              pointerEvents: 'none',
-              '@keyframes secondaryRipple': {
-                '0%': { transform: 'translate(-50%, 0) scale(0.15)', opacity: 0 },
-                '15%': { opacity: 0.5 },
-                '60%': { opacity: 0.1 },
-                '100%': { transform: 'translate(-50%, -80%) scale(4.5)', opacity: 0 },
-              },
+              animation: `secondaryRippleStrong ${10 + delay * 2.2}s infinite ease-out`,
+              animationDelay: `${delay * 1.6}s`,
             }}
           />
         ))}
 
-        {/* Upward light beam / caustic glow – matches the vertical blue light in image */}
+        {/* Strong downward beam */}
         <Box
           sx={{
             position: 'absolute',
-            bottom: 0,
+            top: 0,
             left: '50%',
             transform: 'translateX(-50%)',
-            width: '500px',
-            height: '85%',
-            background: `linear-gradient(to top, transparent 20%, ${alpha(RIPPLE_BRIGHT, 0.22)} 50%, transparent 100%)`,
-            opacity: 0.75,
-            animation: 'beamPulse 14s infinite ease-in-out',
-            pointerEvents: 'none',
-            '@keyframes beamPulse': {
-              '0%, 100%': { opacity: 0.65 },
-              '50%': { opacity: 1 },
-            },
+            width: '800px',
+            height: '100%',
+            background: `linear-gradient(to bottom, transparent 8%, ${alpha(RIPPLE_BRIGHT, 0.55)} 40%, transparent 100%)`,
+            opacity: 0.92,
+            animation: 'beamPulseStrong 8s infinite ease-in-out',
           }}
         />
 
-        {/* Very subtle overall vignette to darken edges */}
+        {/* Darker vignette edges */}
         <Box
           sx={{
             position: 'absolute',
             inset: 0,
-            background: 'radial-gradient(circle at 50% 30%, transparent 30%, rgba(0,0,0,0.55) 100%)',
-            pointerEvents: 'none',
-            opacity: isDark ? 0.6 : 0.3,
+            background: 'radial-gradient(circle at 50% 20%, transparent 20%, rgba(0,0,0,0.82) 100%)',
+            opacity: isDark ? 0.78 : 0.45,
           }}
         />
       </Box>
