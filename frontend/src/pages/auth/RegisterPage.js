@@ -80,9 +80,7 @@ const RegisterPage = () => {
   const isDark = theme.palette.mode === 'dark';
 
   // Adaptive styles
-  const heroBackground = isDark
-    ? 'linear-gradient(135deg, rgba(15,23,42,0.99) 0%, rgba(7,12,22,1) 100%)'
-    : '#f8fafc';
+  const heroBackground = isDark ? '#07121a' : '#f8fafc';
 
   const cardBackground = isDark ? 'rgba(15,23,42,0.94)' : 'rgba(255,255,255,0.96)';
   const cardBorder = isDark ? '1px solid rgba(255,255,255,0.13)' : '1px solid rgba(0,0,0,0.06)';
