@@ -13,32 +13,32 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: |
-        cd frontend
-        npm ci
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
 
-    - name: Build
-      run: |
-        cd frontend
-        npm run build
+      - name: Build
+        run: |
+          cd frontend
+          npm run build
 
-    - name: Create .nojekyll
-      run: |
-        cd frontend
-        touch build/.nojekyll
+      - name: Create .nojekyll
+        run: |
+          cd frontend/build
+          touch .nojekyll
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/master'
-      with:
-        github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        publish_dir: frontend/build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3   # ← fixed version
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: frontend/build
+          force_orphan: true
