@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/RippleFox/static/css/main.cf098bbb.css",
+    "main.js": "/RippleFox/static/js/main.db5de734.js",
+    "index.html": "/RippleFox/index.html",
+    "main.cf098bbb.css.map": "/RippleFox/static/css/main.cf098bbb.css.map",
+    "main.db5de734.js.map": "/RippleFox/static/js/main.db5de734.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf098bbb.css",
+    "static/js/main.db5de734.js"
+  ]
+}
