@@ -26,54 +26,54 @@ const RIPPLE_DARK = 'rgb(0, 100, 155)';
 
 const features = [
   {
-    title: 'Advanced Analytics',
+    title: 'Real-time Project Visibility',
     description:
-      'Pipeline wide intelligence, anomaly detection, and guided decisions so your team can act with conviction.',
+      'Track project progress, timelines, and resource allocation across your entire portfolio with instant dashboard updates.',
     accent: RIPPLE_BRIGHT,
     icon: <FlashIcon fontSize="inherit" sx={{ color: RIPPLE_BRIGHT }} />,
-    badge: 'Insight',
+    badge: 'Control',
   },
   {
-    title: 'Global Network',
-    description: 'Coordinate with partners, clients, and vendors across the world without losing visibility.',
+    title: 'Team Collaboration Hub',
+    description: 'Seamless communication and task coordination for distributed teams. Keep everyone aligned and productive.',
     accent: RIPPLE_MID,
     icon: <NetworkIcon fontSize="inherit" sx={{ color: RIPPLE_BRIGHT }} />,
-    badge: 'Reach',
+    badge: 'Connect',
   },
   {
-    title: 'Innovation',
-    description: 'Prototype faster, validate smarter, and launch with the confidence of a well-tested stack.',
+    title: 'Resource Optimization',
+    description: 'Intelligent resource planning and capacity management to maximize team efficiency and project delivery.',
     accent: '#ff9b4d',
     icon: <InnovationIcon fontSize="inherit" sx={{ color: RIPPLE_BRIGHT }} />,
-    badge: 'Momentum',
+    badge: 'Efficiency',
   },
   {
-    title: 'Security',
-    description: 'Zero trust fundamentals, encrypted transport, and compliance guardrails keep your data safe.',
+    title: 'Risk Management',
+    description: 'Early issue detection, automated alerts, and mitigation playbooks to keep projects on track.',
     accent: '#4caf50',
     icon: <SecurityIcon fontSize="inherit" sx={{ color: RIPPLE_BRIGHT }} />,
-    badge: 'Trust',
+    badge: 'Prevention',
   },
   {
-    title: 'Sustainability',
-    description: 'Automated resource tracking and efficiency reports help you operate responsibly.',
+    title: 'Performance Reporting',
+    description: 'Comprehensive analytics on project health, team velocity, and ROI to drive data-backed decisions.',
     accent: '#7c4dff',
     icon: <PublicIcon fontSize="inherit" sx={{ color: RIPPLE_BRIGHT }} />,
-    badge: 'Impact',
+    badge: 'Insights',
   },
   {
-    title: '24/7 Support',
-    description: 'Experts who anticipate issues before they become incidents and who guide you through recovery.',
+    title: 'Expert Advisory',
+    description: 'Access our project management consultants for strategy, best practices, and continuous improvement guidance.',
     accent: '#f50057',
     icon: <SupportIcon fontSize="inherit" sx={{ color: RIPPLE_BRIGHT }} />,
-    badge: 'Care',
+    badge: 'Growth',
   },
 ];
 
 const statHighlights = [
-  { label: '99.9% Uptime', detail: 'Platform reliability supported by proactive observability.' },
-  { label: '4x Faster Launch', detail: 'Accelerated releases with automation and blueprinting.' },
-  { label: 'Dedicated Crew', detail: 'Product, design, and security experts embedded in your team.' },
+  { label: 'Projects On Time', detail: '92% of our clients deliver projects on schedule.' },
+  { label: '40% Faster Delivery', detail: 'Teams improve delivery speed with better planning and execution.' },
+  { label: 'Expert Partnership', detail: 'Project management consultants embedded in your organization.' },
 ];
 
 const FeaturesPage = () => {
@@ -166,11 +166,11 @@ const FeaturesPage = () => {
             }}
           />
           <Typography variant="h2" component="h1" sx={{ fontWeight: 900, mb: 3 }}>
-            What Makes Ripple Fox Ready for the Next Era of SaaS?
+            Deliver Projects Better, Faster, and Smarter
           </Typography>
           <Typography variant="body1" sx={{ maxWidth: 680, mb: 5, lineHeight: 1.8, opacity: 0.95, color: isDark ? '#ffffff' : '#ffffff' }}>
-            We blend strategic product leadership with bold engineering so every feature you ship feels inevitable, not accidental.  
-            Our systems flex between reliability, velocity, and delight.
+            Ripple Fox combines intelligent project management tools with expert consulting to help your teams deliver exceptional results consistently. 
+            We make project success achievable and repeatable.
           </Typography>
           <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
             <Button
@@ -185,7 +185,7 @@ const FeaturesPage = () => {
                 '&:hover': { backgroundColor: 'rgba(255,255,255,0.9)' },
               }}
             >
-              Explore the platform
+              See Our Platform
             </Button>
             <Button
               variant="outlined"
@@ -196,7 +196,7 @@ const FeaturesPage = () => {
                 '&:hover': { borderColor: '#ffffff', background: 'rgba(255,255,255,0.1)' },
               }}
             >
-              Download the deck
+              Client Success Stories
             </Button>
           </Box>
         </Box>
@@ -280,10 +280,10 @@ const FeaturesPage = () => {
           <Grid container spacing={5} alignItems="center">
             <Grid item xs={12} md={6}>
               <Typography variant="h4" sx={{ fontWeight: 900, mb: 3, color: headingColor }}>
-                Built for teams that move fast and care deeply.
+                Designed for Project Leaders Who Deliver Results
               </Typography>
               <Typography sx={{ color: isDark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.8)', lineHeight: 1.8, mb: 4 }}>
-                Ripple Fox is the cockpit where strategy, product, and operations intersect. Every feature is prefaced by research, fast prototyping, and measurable outcomes.
+                Ripple Fox brings project management and strategic advisory together. We combine powerful tools with expert guidance so your team can focus on what matters: delivering successful projects that drive business value.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button

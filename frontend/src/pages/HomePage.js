@@ -44,12 +44,12 @@ const features = [
 ];
 
 const benefits = [
-  '24/7 Customer Support',
-  '99.9% Uptime Guarantee',
-  'Scalable Solutions',
-  'User-friendly Interface',
-  'Regular Updates',
-  'Data Analytics',
+  'Expert PM Consultants',
+  'Proven Success Rate',
+  'Flexible Methodologies',
+  'Clear Communication',
+  'Continuous Improvement',
+  'Performance Metrics',
 ];
 
 const coreValues = [
@@ -63,56 +63,55 @@ const coreValues = [
 
 const services = [
   {
-    title: 'SaaS Product Strategy',
+    title: 'Project Strategy & Planning',
     icon: <SettingsSuggestIcon fontSize="large" color="secondary" />,
     bullets: [
-      'Roadmap refinement & discovery workshops',
-      'Platform architecture & scalability planning',
-      'User experience blueprints',
-      'Roadmap coaching for internal teams',
+      'Portfolio assessment & optimization',
+      'Project roadmap development',
+      'Delivery methodology design',
+      'Resource planning & allocation',
     ],
   },
   {
     title: 'Project Leadership & Consulting',
     icon: <FlashIcon fontSize="large" color="secondary" />,
     bullets: [
-      'Agile delivery & product management',
-      'Technical advisory for CTOs/VPs',
+      'Agile delivery & project management',
+      'Project Management advisory for teams',
       'Change management & enablement',
-      'Performance reviews and mentoring',
     ],
   },
   {
-    title: 'Web, Mobile & ERP Engineering',
+    title: 'Team Development & Training',
     icon: <EngineeringIcon fontSize="large" color="secondary" />,
     bullets: [
-      'Custom web & mobile app development',
-      'ERP implementation & integrations',
-      'API-first ecosystems & automation',
-      'Maintenance, support, and scaling',
+      'Project management certification programs',
+      'Agile & Scrum training',
+      'Leadership development',
+      'Best practices coaching & support',
     ],
   },
 ];
 
 const statHighlights = [
   {
-    title: 'Product Velocity',
-    description: 'We compress discovery, design, and delivery so your SaaS roadmap launches reliably.',
+    title: 'Delivery Excellence',
+    description: 'We help teams deliver projects on time, on budget, and exceeding stakeholder expectations.',
   },
   {
     title: 'Trusted Advisors',
-    description: 'Fractional CTO/PM leadership keeps every initiative aligned to business outcomes.',
+    description: 'Fractional PM leadership keeps every initiative aligned to business outcomes.',
   },
   {
-    title: 'ERP Ready',
-    description: 'We align off-the-shelf suites or bespoke stacks with your people and processes.',
+    title: 'Proven Methodologies',
+    description: 'We combine Agile, traditional, and hybrid approaches tailored to your organizational needs.',
   },
 ];
 
 const metrics = [
-  { label: 'Engineers on the ground', value: '100+' },
-  { label: 'Portfolios delivered', value: '5+' },
-  { label: 'Satisfied clients', value: '8+' },
+  { label: 'Project Leaders', value: '50+' },
+  { label: 'Projects Delivered', value: '200+' },
+  { label: 'Satisfied Clients', value: '80+' },
 ];
 
 const partnerLogos = [
@@ -173,7 +172,7 @@ const HomePage = () => {
                 Powering the Future of Business
               </Typography>
                <Typography variant="h6" sx={{ mb: 3, fontWeight: 350, color: isDark ? '#ffffff' : '#ffffff' }}>
-                SaaS products, project leadership, and technical guidance crafted to accelerate your digital initiatives.
+                SaaS products, project leadership, and project management guidance crafted to accelerate your digital initiatives.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button
@@ -244,11 +243,11 @@ const HomePage = () => {
                 About Us
               </Typography>
               <Typography variant="h3" component="h2" sx={{ fontWeight: 700, mb: 3, color: headingColor }}>
-                Infrastructure engineering services.
+                Project Management Excellence.
               </Typography>
               <Typography sx={{ color: 'text.secondary' }}>
-                Ripple Fox creates SaaS platforms, orchestrates high-impact projects, and consults on digital transformation so teams can deliver faster.
-                From product vision to ERP deployment, our experts guide every phase with clarity and accountability.
+                Ripple Fox builds SaaS platforms for project managers, orchestrates high-impact projects, and provides strategic consulting so teams can deliver faster.
+                From project planning to successful completion, our experts guide every phase with clarity and accountability.
               </Typography>
               <Button
                 component={Link}
@@ -819,7 +818,7 @@ const HomePage = () => {
                 </Typography>
                 <Stack spacing={2}>
                   <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)' }}>
-                    <strong>Address:</strong> 123 Business Avenue, Tech City, 10001
+                    <strong>Address:</strong> 123 Business Avenue, Business City, 10001
                   </Typography>
                   <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)' }}>
                     <strong>Email:</strong> info@ripplefox.co

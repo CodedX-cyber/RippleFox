@@ -45,7 +45,7 @@ const ContactPage = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <LocationOn color="primary" sx={{ mr: 2 }} />
-                <Typography sx={{ color: 'text.secondary' }}>123 Business Avenue, Tech City, 10001</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>123 Business Avenue, Business City, 10001</Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, transition: 'all 0.3s', '&:hover': { backgroundColor: infoBoxHover, transform: 'translateX(5px)' } }}>
                 <AccessTime color="primary" sx={{ mr: 2 }} />
@@ -178,7 +178,7 @@ const ContactPage = () => {
                 <Typography sx={{ color: 'text.secondary' }}>What services do you offer?</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography sx={{ color: 'text.secondary' }}>We offer a wide range of services including technology, energy, IT consulting, project management, and financial services.</Typography>
+                <Typography sx={{ color: 'text.secondary' }}>We offer a wide range of services including energy, IT consulting, project management, business strategy, and financial services.</Typography>
               </AccordionDetails>
             </Accordion>
           </Box>

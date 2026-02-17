@@ -33,7 +33,7 @@ const team = [
     name: 'Israel King-Alale',
     role: 'CTO',
     avatar: 'I',
-    bio: 'Technology expert driving innovation and digital transformation.',
+    bio: 'CTO driving innovation in project management and digital delivery.',
   },
   {
     name: 'Sharon King-Alale',
@@ -190,11 +190,11 @@ const AboutPage = () => {
               <Typography sx={{ color: 'text.secondary', mb: 3, lineHeight: 1.8 }}>
                 Founded in 2025, Ripple Fox began as a small startup with a vision to revolutionize the energy sector. 
                 Through relentless innovation and strategic expansion, we've grown into a diversified global enterprise 
-                with operations spanning technology, energy, IT consulting, project management, and financial services.
+                with operations spanning energy, IT consulting, project management, and financial services.
               </Typography>
               <Typography sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
                 Our commitment to excellence, sustainability, and customer success has been the cornerstone of our journey. 
-                We continue to push boundaries, embrace emerging technologies, and set new standards in every industry we serve.
+                We continue to push boundaries, embrace project management best practices, and set new standards in every industry we serve.
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
