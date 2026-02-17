@@ -1,7 +1,7 @@
-# Volt Conglomerate - NEXUS Platform
+# RippleFox - NEXUS Platform
 
 ## Project Overview
-Volt Conglomerate is a technology company focused on delivering AI-driven digital solutions for African markets. This repository contains the NEXUS (Nuclear Explosion Utilization System) platform, an innovative energy solution, along with other digital services.
+RippleFox is a technology company focused on delivering AI-driven digital solutions for African markets. This repository contains the NEXUS (Nuclear Explosion Utilization System) platform, an innovative energy solution, along with other digital services.
 
 ## Tech Stack
 - **Frontend**: React.js with TypeScript
