@@ -37,6 +37,8 @@ id_rsa
 id_rsa.pub
 fresh
 fresh.pub
+deploy_key
+deploy_key.pub
 *.key
 *.private
 *.pem
